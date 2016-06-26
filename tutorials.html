@@ -265,10 +265,10 @@ Tips and tricks </h1>
 </ul>
 <h2><a class="anchor" id="common_mixin_parent"></a>
 Mixins with a common parent </h2>
-<p>Sometimes you will feel the need to have mixins with a common parent. Most likely this will happen when you want to define two different mixins that share some common functionality. Moving the shared functionality in the same common parent is a good idea and DynaMix will work exactly the same way if you do this. However there is a pitfall in this case. It happens when you have multiple inheritance. Due to the special nature in which the library arranges the memory internally, if a mixin type has more than one parent, using <code>bm_this</code> in some of those parents might lead to crashes.</p>
-<p>More precisely, when the library allocates memory for a mixin type, it allocates a buffer that is slightly bigger than needed and puts the pointer to the owning object at its front. What <code>bm_this</code> does is actually an offset from <code>this</code> with the appropriate number of bytes for <code>object*</code>. So if a parent of your mixin type, other than the first, calls <code>bm_this</code>, it will end up returning an invalid pointer to the owning object.</p>
+<p>Sometimes you will feel the need to have mixins with a common parent. Most likely this will happen when you want to define two different mixins that share some common functionality. Moving the shared functionality in the same common parent is a good idea and DynaMix will work exactly the same way if you do this. However there is a pitfall in this case. It happens when you have multiple inheritance. Due to the special nature in which the library arranges the memory internally, if a mixin type has more than one parent, using <code>dm_this</code> in some of those parents might lead to crashes.</p>
+<p>More precisely, when the library allocates memory for a mixin type, it allocates a buffer that is slightly bigger than needed and puts the pointer to the owning object at its front. What <code>dm_this</code> does is actually an offset from <code>this</code> with the appropriate number of bytes for <code>object*</code>. So if a parent of your mixin type, other than the first, calls <code>dm_this</code>, it will end up returning an invalid pointer to the owning object.</p>
 <p>To be able to have parents, other than the first, with access to the owning object we suggest that you create a pure virtual function that gets it from the actual mixin type.</p>
-<p>Say <code>virtual object* get_bm_object() = 0;</code> in the parents, which is implemented in the child class (the actual mixin defined with <code>DYNAMIX_DEFINE_MIXIN</code>) by simply <code>return bm_this</code>.</p>
+<p>Say <code>virtual object* get_bm_object() = 0;</code> in the parents, which is implemented in the child class (the actual mixin defined with <code>DYNAMIX_DEFINE_MIXIN</code>) by simply <code>return dm_this</code>.</p>
 <p>Of course there are other ways to accomplish this, for example with CRTP, but the virtual function is probably the cleanest and safest one.</p>
 <h1><a class="anchor" id="common_problems"></a>
 Common problems and solutions </h1>
@@ -344,7 +344,7 @@ messages"<ul>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jun 26 2016 22:45:11 for DynaMix by
+    <li class="footer">Generated on Sun Jun 26 2016 23:00:02 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>
