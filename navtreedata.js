@@ -54,6 +54,7 @@ var NAVTREE =
       ] ]
     ] ],
     [ "Examples", "examples.html", [
+      [ "Hello World ", "examples.html#example_hello", null ],
       [ "Basic ", "examples.html#example_basic", [
         [ "Includes ", "examples.html#basic_inc", null ],
         [ "Code ", "examples.html#basic_code", null ]

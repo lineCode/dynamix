@@ -285,7 +285,7 @@ Using custom allocators </h1>
 <p>Now all mixin allocations and deallocations will pass through our mixin allocator:</p>
 <div class="fragment"><div class="line"><a class="code" href="classdynamix_1_1object.html" title="The main object class. ">dynamix::object</a> o;</div><div class="line"></div><div class="line"><a class="code" href="classdynamix_1_1single__object__mutator.html">dynamix::mutate</a>(o)</div><div class="line">    .add&lt;dead_character&gt;();</div><div class="line"></div><div class="line"><a class="code" href="classdynamix_1_1single__object__mutator.html">dynamix::mutate</a>(o)</div><div class="line">    .remove&lt;dead_character&gt;();</div><div class="line"></div><div class="line"><span class="comment">// safe because we&#39;ve destroyed all instances of dead_character</span></div><div class="line">per_frame_allocator&lt;dead_character&gt;::instance().reset();</div></div><!-- fragment --><h1><a class="anchor" id="more_msg_arity"></a>
 Having messages with more arguments </h1>
-<p>Currently the maximum number of arguments you can have in a message is: </p><pre class="fragment">4
+<p>Currently the maximum number of arguments you can have in a message is: </p><pre class="fragment">6
 </pre><p>There simply is no message declaration macro for messages with more. If you need macros for messages with more arguments, you can do so, without having to rebuild the library.</p>
 <p>In your DynaMix installation, in the <code>gen</code> directory you will see a file, named <code>arity</code>. It is a text file with a single number in it. Edit the file, setting the number to whichever value you need. Then run the script <code>gen_message_macros.rb</code> (you will need a Ruby interpreter to do so). It will generate the file <code>include/dynamix/gen/message_macros.hpp</code> with macros for messages with 0 to <em>arity</em> arguments.</p>
 <p>If you use an include directory for DynaMix diferent from the one in your installation, you will have to manually copy the newly generated message macros file over the one you use.</p>
@@ -369,7 +369,11 @@ Macros rationale </h1>
 Mixin definition and declaration macros </h2>
 <p>The mixin definition and declaration macros are often mentioned as easy to remove, and indeed there is a way to reproduce almost all of their functionality without any macros. However not all of it can be reproduced.</p>
 <p>One of the key features those macros provide is the global instantiation. Without them, the users will be required to provide explicit entry points for their subsystems and dynamic libraries, where they will have to call some mixin initialization functions. This is not as simple as it sounds. Here is a list of downsides that such explicit entry points may introduce:</p>
-<p>They will be compilation dependency "focal points": All mixins classes introduced by a subsystem would need to be visible from there, which means recompilations on every change, and more maintenance for the code. The users will have to be extra careful not to add mixins to objects before their initialization is called. Duplicated instances of the mixin data structures will exist in different modules (executable and dynamic libraries). In order to deal with this, the domain would need to store multiple copies of info for the same mixin. This will add a small runtime cost to the message calls and mutations.</p>
+<ul>
+<li>They will be compilation dependency "focal points": All mixins classes introduced by a subsystem would need to be visible from there, which means recompilations on every change, and more maintenance for the code.</li>
+<li>The users will have to be extra careful not to add mixins to objects before their initialization is called.</li>
+<li>Duplicated instances of the mixin data structures will exist in different modules (executable and dynamic libraries). In order to deal with this, the domain would need to store multiple copies of info for the same mixin. This will add a small runtime cost to the message calls and mutations.</li>
+</ul>
 <h2><a class="anchor" id="why_msg_macros"></a>
 Message definition and declaration macros </h2>
 <p>The message macros are most likely impossible to remove. Unlike the mixin ones, each of them generates many lines of code. More than a hundred.</p>
@@ -384,7 +388,7 @@ External custom preprocessor </h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sun Jun 26 2016 23:00:02 for DynaMix by
+    <li class="footer">Generated on Mon Jun 27 2016 23:18:16 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>
