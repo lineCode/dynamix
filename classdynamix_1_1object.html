@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -135,6 +135,24 @@ Public Member Functions</h2></td></tr>
 &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamix_1_1object.html#a399879211f8796f0332a3c79380e91ff">object</a> (<a class="el" href="classdynamix_1_1object.html">object</a> &amp;&amp;o)</td></tr>
 <tr class="memdesc:a399879211f8796f0332a3c79380e91ff"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move constructor from an existing object. <br /></td></tr>
 <tr class="separator:a399879211f8796f0332a3c79380e91ff"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a2e82cb3b9a2b5dac8365d6282a2bb9c6"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2e82cb3b9a2b5dac8365d6282a2bb9c6"></a>
+<a class="el" href="classdynamix_1_1object.html">object</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamix_1_1object.html#a2e82cb3b9a2b5dac8365d6282a2bb9c6">operator=</a> (<a class="el" href="classdynamix_1_1object.html">object</a> &amp;&amp;o)</td></tr>
+<tr class="memdesc:a2e82cb3b9a2b5dac8365d6282a2bb9c6"><td class="mdescLeft">&#160;</td><td class="mdescRight">Move assignment. <br /></td></tr>
+<tr class="separator:a2e82cb3b9a2b5dac8365d6282a2bb9c6"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a74f94f341f1b7bb30a405ed441b7642e"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a74f94f341f1b7bb30a405ed441b7642e"></a>
+&#160;</td><td class="memItemRight" valign="bottom"><b>object</b> (const <a class="el" href="classdynamix_1_1object.html">object</a> &amp;o)=delete</td></tr>
+<tr class="separator:a74f94f341f1b7bb30a405ed441b7642e"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a051188521a2a6fb7d7e971180f23ae46"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a051188521a2a6fb7d7e971180f23ae46"></a>
+<a class="el" href="classdynamix_1_1object.html">object</a> &amp;&#160;</td><td class="memItemRight" valign="bottom"><b>operator=</b> (const <a class="el" href="classdynamix_1_1object.html">object</a> &amp;o)=delete</td></tr>
+<tr class="separator:a051188521a2a6fb7d7e971180f23ae46"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ad853b6f2f29cea857d8b8d8d0eb0485a"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ad853b6f2f29cea857d8b8d8d0eb0485a"></a>
+<a class="el" href="classdynamix_1_1object.html">object</a>&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamix_1_1object.html#ad853b6f2f29cea857d8b8d8d0eb0485a">copy</a> () const </td></tr>
+<tr class="memdesc:ad853b6f2f29cea857d8b8d8d0eb0485a"><td class="mdescLeft">&#160;</td><td class="mdescRight">Explicit copy via move assignment. <br /></td></tr>
+<tr class="separator:ad853b6f2f29cea857d8b8d8d0eb0485a"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:adf5cfe19ba91115d0512a94697320c2f"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamix_1_1object.html#adf5cfe19ba91115d0512a94697320c2f">copy_from</a> (const <a class="el" href="classdynamix_1_1object.html">object</a> &amp;o)</td></tr>
+<tr class="separator:adf5cfe19ba91115d0512a94697320c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aff534c25d83fc9ea7ca94d1a413033be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamix_1_1object.html#aff534c25d83fc9ea7ca94d1a413033be">copy_matching_from</a> (const <a class="el" href="classdynamix_1_1object.html">object</a> &amp;o)</td></tr>
+<tr class="separator:aff534c25d83fc9ea7ca94d1a413033be"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9d38e040bf4f91646433f78d663a478"><td class="memTemplParams" colspan="2"><a class="anchor" id="af9d38e040bf4f91646433f78d663a478"></a>
 template&lt;typename Mixin &gt; </td></tr>
 <tr class="memitem:af9d38e040bf4f91646433f78d663a478"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classdynamix_1_1object.html#af9d38e040bf4f91646433f78d663a478">has</a> () const </td></tr>
@@ -179,6 +197,40 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
 <a name="details" id="details"></a><h2 class="groupheader">Detailed Description</h2>
 <div class="textblock"><p>The main object class. </p>
 </div><h2 class="groupheader">Member Function Documentation</h2>
+<a class="anchor" id="adf5cfe19ba91115d0512a94697320c2f"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamix::object::copy_from </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classdynamix_1_1object.html">object</a> &amp;&#160;</td>
+          <td class="paramname"><em>o</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Explicit assignment from existing object Will also change the type of the target to the source type. Will call assignment operators for mixins that exist in both. Will copy-construct new mixins for this. Will destroy mixins that don't exist in source. It will not, however, match asssignment operators for different mixin types which have such defined between them, </p>
+
+</div>
+</div>
+<a class="anchor" id="aff534c25d83fc9ea7ca94d1a413033be"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">void dynamix::object::copy_matching_from </td>
+          <td>(</td>
+          <td class="paramtype">const <a class="el" href="classdynamix_1_1object.html">object</a> &amp;&#160;</td>
+          <td class="paramname"><em>o</em></td><td>)</td>
+          <td></td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Assignment of mixins that exist in both objects Will not change the type of the target. Will call assignment operators for mixins that exist in both objects. It will not, however, match asssignment operators for different mixin types which have such defined between them, </p>
+
+</div>
+</div>
 <a class="anchor" id="af9c81f8a4905785e36e5e66034584776"></a>
 <div class="memitem">
 <div class="memproto">
@@ -274,7 +326,7 @@ template&lt;typename Mixin &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>dynamix</b></li><li class="navelem"><a class="el" href="classdynamix_1_1object.html">object</a></li>
-    <li class="footer">Generated on Mon Jun 27 2016 23:18:16 for DynaMix by
+    <li class="footer">Generated on Sun Jan 15 2017 23:24:02 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

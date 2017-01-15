@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -115,6 +115,7 @@ $(document).ready(function(){initNavTree('message_8hpp.html','');});
 </div><!--header-->
 <div class="contents">
 <div class="textblock"><code>#include &quot;<a class="el" href="feature_8hpp.html">feature.hpp</a>&quot;</code><br />
+<code>#include &lt;type_traits&gt;</code><br />
 </div><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="nested-classes"></a>
 Classes</h2></td></tr>
@@ -128,6 +129,8 @@ Classes</h2></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdynamix_1_1internal_1_1message__default__impl__registrator.html">dynamix::internal::message_default_impl_registrator&lt; Message &gt;</a></td></tr>
 <tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:"><td class="memItemLeft" align="right" valign="top">struct &#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="structdynamix_1_1internal_1_1has__set__num__results.html">dynamix::internal::has_set_num_results&lt; Combinator &gt;</a></td></tr>
+<tr class="separator:"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="typedef-members"></a>
 Typedefs</h2></td></tr>
@@ -137,6 +140,14 @@ typedef void(*&#160;</td><td class="memItemRight" valign="bottom"><b>dynamix::in
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="func-members"></a>
 Functions</h2></td></tr>
+<tr class="memitem:a117e72edd1b86989a3246a0ba902b1b3"><td class="memTemplParams" colspan="2"><a class="anchor" id="a117e72edd1b86989a3246a0ba902b1b3"></a>
+template&lt;typename Combinator &gt; </td></tr>
+<tr class="memitem:a117e72edd1b86989a3246a0ba902b1b3"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt; has_set_num_results&lt; Combinator &gt;::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>dynamix::internal::set_num_results_for</b> (Combinator &amp;c, size_t num_results)</td></tr>
+<tr class="separator:a117e72edd1b86989a3246a0ba902b1b3"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae993ebfad9990cc885e38abf8305221b"><td class="memTemplParams" colspan="2"><a class="anchor" id="ae993ebfad9990cc885e38abf8305221b"></a>
+template&lt;typename Combinator &gt; </td></tr>
+<tr class="memitem:ae993ebfad9990cc885e38abf8305221b"><td class="memTemplItemLeft" align="right" valign="top">std::enable_if&lt;!has_set_num_results&lt; Combinator &gt;::value &gt;::type&#160;</td><td class="memTemplItemRight" valign="bottom"><b>dynamix::internal::set_num_results_for</b> (Combinator &amp;, size_t)</td></tr>
+<tr class="separator:ae993ebfad9990cc885e38abf8305221b"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:ae5864dec2069fd75a5bc69a23befe849"><td class="memTemplParams" colspan="2"><a class="anchor" id="ae5864dec2069fd75a5bc69a23befe849"></a>
 template&lt;typename Message &gt; </td></tr>
 <tr class="memitem:ae5864dec2069fd75a5bc69a23befe849"><td class="memTemplItemLeft" align="right" valign="top">internal::message_priority&lt; Message &gt;&#160;</td><td class="memTemplItemRight" valign="bottom"><b>dynamix::priority</b> (int p, Message *)</td></tr>
@@ -156,7 +167,7 @@ struct DYNAMIX_API&#160;</td><td class="memItemRight" valign="bottom"><b>dynamix
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_1311ec3b1f3820375d35d4193290438d.html">dynamix</a></li><li class="navelem"><a class="el" href="message_8hpp.html">message.hpp</a></li>
-    <li class="footer">Generated on Mon Jun 27 2016 23:18:15 for DynaMix by
+    <li class="footer">Generated on Sun Jan 15 2017 23:24:00 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

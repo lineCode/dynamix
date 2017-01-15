@@ -4,6 +4,8 @@ var hierarchy =
     [ "dynamix::combinators::boolean_or< MessageReturnType >", "classdynamix_1_1combinators_1_1boolean__or.html", null ],
     [ "std::exception", null, [
       [ "dynamix::exception", "classdynamix_1_1exception.html", [
+        [ "dynamix::bad_copy_assignment", "classdynamix_1_1bad__copy__assignment.html", null ],
+        [ "dynamix::bad_copy_construction", "classdynamix_1_1bad__copy__construction.html", null ],
         [ "dynamix::bad_message_call", "classdynamix_1_1bad__message__call.html", null ],
         [ "dynamix::bad_mutation", "classdynamix_1_1bad__mutation.html", null ],
         [ "dynamix::bad_mutation_source", "classdynamix_1_1bad__mutation__source.html", null ],
@@ -17,6 +19,8 @@ var hierarchy =
       [ "dynamix::internal::default_allocator", "classdynamix_1_1internal_1_1default__allocator.html", null ],
       [ "dynamix::mixin_allocator", "classdynamix_1_1mixin__allocator.html", null ]
     ] ],
+    [ "dynamix::internal::has_set_num_results< Combinator >", "structdynamix_1_1internal_1_1has__set__num__results.html", null ],
+    [ "dynamix::combinators::mean< MessageReturnType >", "classdynamix_1_1combinators_1_1mean.html", null ],
     [ "dynamix::internal::message_default_impl_registrator< Message >", "structdynamix_1_1internal_1_1message__default__impl__registrator.html", null ],
     [ "dynamix::internal::message_feature_tag", "structdynamix_1_1internal_1_1message__feature__tag.html", null ],
     [ "dynamix::internal::message_for_mixin", "structdynamix_1_1internal_1_1message__for__mixin.html", null ],
@@ -50,9 +54,9 @@ var hierarchy =
       [ "dynamix::mixin_collection", "classdynamix_1_1mixin__collection.html", [
         [ "dynamix::internal::object_type_info", "classdynamix_1_1internal_1_1object__type__info.html", null ],
         [ "dynamix::mutually_exclusive_mixins", "classdynamix_1_1mutually__exclusive__mixins.html", null ]
-      ] ],
-      [ "dynamix::object", "classdynamix_1_1object.html", null ]
+      ] ]
     ] ],
+    [ "dynamix::object", "classdynamix_1_1object.html", null ],
     [ "dynamix::object_type_mutation", "classdynamix_1_1object__type__mutation.html", null ],
     [ "dynamix::combinators::sum< MessageReturnType >", "classdynamix_1_1combinators_1_1sum.html", null ]
 ];

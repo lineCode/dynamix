@@ -4,6 +4,7 @@ var annotated_dup =
       [ "combinators", null, [
         [ "boolean_and", "classdynamix_1_1combinators_1_1boolean__and.html", "classdynamix_1_1combinators_1_1boolean__and" ],
         [ "boolean_or", "classdynamix_1_1combinators_1_1boolean__or.html", "classdynamix_1_1combinators_1_1boolean__or" ],
+        [ "mean", "classdynamix_1_1combinators_1_1mean.html", "classdynamix_1_1combinators_1_1mean" ],
         [ "sum", "classdynamix_1_1combinators_1_1sum.html", "classdynamix_1_1combinators_1_1sum" ]
       ] ],
       [ "internal", null, [
@@ -13,6 +14,7 @@ var annotated_dup =
         [ "feature_instance", "structdynamix_1_1internal_1_1feature__instance.html", null ],
         [ "feature_parser", "classdynamix_1_1internal_1_1feature__parser.html", "classdynamix_1_1internal_1_1feature__parser" ],
         [ "feature_registrator", "classdynamix_1_1internal_1_1feature__registrator.html", "classdynamix_1_1internal_1_1feature__registrator" ],
+        [ "has_set_num_results", "structdynamix_1_1internal_1_1has__set__num__results.html", null ],
         [ "mandatory_mixin_impl", "classdynamix_1_1internal_1_1mandatory__mixin__impl.html", "classdynamix_1_1internal_1_1mandatory__mixin__impl" ],
         [ "message_default_impl_registrator", "structdynamix_1_1internal_1_1message__default__impl__registrator.html", "structdynamix_1_1internal_1_1message__default__impl__registrator" ],
         [ "message_feature_tag", "structdynamix_1_1internal_1_1message__feature__tag.html", null ],
@@ -27,6 +29,8 @@ var annotated_dup =
         [ "object_type_info", "classdynamix_1_1internal_1_1object__type__info.html", "classdynamix_1_1internal_1_1object__type__info" ],
         [ "substitute_mixin_impl", "classdynamix_1_1internal_1_1substitute__mixin__impl.html", "classdynamix_1_1internal_1_1substitute__mixin__impl" ]
       ] ],
+      [ "bad_copy_assignment", "classdynamix_1_1bad__copy__assignment.html", null ],
+      [ "bad_copy_construction", "classdynamix_1_1bad__copy__construction.html", null ],
       [ "bad_message_call", "classdynamix_1_1bad__message__call.html", null ],
       [ "bad_mutation", "classdynamix_1_1bad__mutation.html", null ],
       [ "bad_mutation_source", "classdynamix_1_1bad__mutation__source.html", null ],

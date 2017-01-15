@@ -1,8 +1,8 @@
 var searchData=
 [
-  ['same_5ftype_5fmutator',['same_type_mutator',['../classdynamix_1_1same__type__mutator.html',1,'dynamix']]],
-  ['single_5fobject_5fmutator',['single_object_mutator',['../classdynamix_1_1single__object__mutator.html',1,'dynamix']]],
-  ['substitute_5fmixin',['substitute_mixin',['../classdynamix_1_1substitute__mixin.html',1,'dynamix']]],
-  ['substitute_5fmixin_5fimpl',['substitute_mixin_impl',['../classdynamix_1_1internal_1_1substitute__mixin__impl.html',1,'dynamix::internal']]],
-  ['sum',['sum',['../classdynamix_1_1combinators_1_1sum.html',1,'dynamix::combinators']]]
+  ['object',['object',['../classdynamix_1_1object.html',1,'dynamix']]],
+  ['object_5fmutator',['object_mutator',['../classdynamix_1_1internal_1_1object__mutator.html',1,'dynamix::internal']]],
+  ['object_5ftype_5finfo',['object_type_info',['../classdynamix_1_1internal_1_1object__type__info.html',1,'dynamix::internal']]],
+  ['object_5ftype_5fmutation',['object_type_mutation',['../classdynamix_1_1object__type__mutation.html',1,'dynamix']]],
+  ['object_5ftype_5ftemplate',['object_type_template',['../classdynamix_1_1object__type__template.html',1,'dynamix']]]
 ];

@@ -5,7 +5,8 @@ var files =
     [ "combinators.hpp", "combinators_8hpp.html", [
       [ "boolean_and", "classdynamix_1_1combinators_1_1boolean__and.html", "classdynamix_1_1combinators_1_1boolean__and" ],
       [ "boolean_or", "classdynamix_1_1combinators_1_1boolean__or.html", "classdynamix_1_1combinators_1_1boolean__or" ],
-      [ "sum", "classdynamix_1_1combinators_1_1sum.html", "classdynamix_1_1combinators_1_1sum" ]
+      [ "sum", "classdynamix_1_1combinators_1_1sum.html", "classdynamix_1_1combinators_1_1sum" ],
+      [ "mean", "classdynamix_1_1combinators_1_1mean.html", "classdynamix_1_1combinators_1_1mean" ]
     ] ],
     [ "common_mutation_rules.hpp", "common__mutation__rules_8hpp.html", [
       [ "mutually_exclusive_mixins", "classdynamix_1_1mutually__exclusive__mixins.html", "classdynamix_1_1mutually__exclusive__mixins" ],

@@ -6,5 +6,8 @@ var searchData=
   ['clear_5fall_5fimplementing',['clear_all_implementing',['../classdynamix_1_1mixin__collection.html#a90b2e3595d6ee1ad9fefb1e68211d235',1,'dynamix::mixin_collection']]],
   ['combinators_2ehpp',['combinators.hpp',['../combinators_8hpp.html',1,'']]],
   ['common_5fmutation_5frules_2ehpp',['common_mutation_rules.hpp',['../common__mutation__rules_8hpp.html',1,'']]],
-  ['config_2ehpp',['config.hpp',['../config_8hpp.html',1,'']]]
+  ['config_2ehpp',['config.hpp',['../config_8hpp.html',1,'']]],
+  ['copy',['copy',['../classdynamix_1_1object.html#ad853b6f2f29cea857d8b8d8d0eb0485a',1,'dynamix::object']]],
+  ['copy_5ffrom',['copy_from',['../classdynamix_1_1object.html#adf5cfe19ba91115d0512a94697320c2f',1,'dynamix::object']]],
+  ['copy_5fmatching_5ffrom',['copy_matching_from',['../classdynamix_1_1object.html#aff534c25d83fc9ea7ca94d1a413033be',1,'dynamix::object']]]
 ];

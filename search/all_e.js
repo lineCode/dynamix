@@ -2,6 +2,7 @@ var searchData=
 [
   ['same_5ftype_5fmutator',['same_type_mutator',['../classdynamix_1_1same__type__mutator.html',1,'dynamix']]],
   ['set_5fglobal_5fallocator',['set_global_allocator',['../domain_8hpp.html#a407a270bc4f4a996f843bb20c5fb6380',1,'dynamix']]],
+  ['set_5fnum_5fresults',['set_num_results',['../classdynamix_1_1combinators_1_1mean.html#a8a0c428d128e3faaa603295afbae6b63',1,'dynamix::combinators::mean']]],
   ['set_5fsource',['set_source',['../classdynamix_1_1object__type__mutation.html#a2cfec7729dafa0d66366a768547a9bdf',1,'dynamix::object_type_mutation']]],
   ['single_5fobject_5fmutator',['single_object_mutator',['../classdynamix_1_1single__object__mutator.html',1,'dynamix']]],
   ['source_5fhas',['source_has',['../classdynamix_1_1object__type__mutation.html#ab8b0033c5e14006504484145e74fa5e6',1,'dynamix::object_type_mutation']]],

@@ -1,8 +1,5 @@
 var searchData=
 [
-  ['object',['object',['../classdynamix_1_1object.html',1,'dynamix']]],
-  ['object_5fmutator',['object_mutator',['../classdynamix_1_1internal_1_1object__mutator.html',1,'dynamix::internal']]],
-  ['object_5ftype_5finfo',['object_type_info',['../classdynamix_1_1internal_1_1object__type__info.html',1,'dynamix::internal']]],
-  ['object_5ftype_5fmutation',['object_type_mutation',['../classdynamix_1_1object__type__mutation.html',1,'dynamix']]],
-  ['object_5ftype_5ftemplate',['object_type_template',['../classdynamix_1_1object__type__template.html',1,'dynamix']]]
+  ['no_5ffeatures_5ft',['no_features_t',['../structdynamix_1_1no__features__t.html',1,'dynamix']]],
+  ['noncopyable',['noncopyable',['../structdynamix_1_1internal_1_1noncopyable.html',1,'dynamix::internal']]]
 ];

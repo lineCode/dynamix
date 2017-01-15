@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -171,7 +171,7 @@ Comparison with multiple inheritance </h2>
 </ul>
 <p>However, even-though compared to other libraries that have similar features, DynaMix is one of the fastest and with the least memory overhead, using the library comes with some inevitable downsides when compared with plain multiple inheritance:</p>
 <ul>
-<li><b>No compile-time type</b>: An object derived from, say, <code>foo</code> and <code>bar</code> can implicitly be cast too <code>foo</code> or <code>bar</code>. Since the library uses a placeholder type &ndash; <code><a class="el" href="classdynamix_1_1object.html" title="The main object class. ">dynamix::object</a></code> &ndash; implicit casts to any of its mixins are impossible. That aside, the hypothetical object from above will receive all of the methods from foo and bar, but while this is true for the <code><a class="el" href="classdynamix_1_1object.html" title="The main object class. ">dynamix::object</a></code> with such mixins, a compilation error cannot be generated if a message is called that the object can't handle. A runtime error will be generated instead, which is the norm in similar libraries, but is harder to catch and debug than it is with plain multiple inheritance.</li>
+<li><b>No compile-time type</b>: An object derived from, say, <code>foo</code> and <code>bar</code> can implicitly be cast to <code>foo</code> or <code>bar</code>. Since the library uses a placeholder type &ndash; <code><a class="el" href="classdynamix_1_1object.html" title="The main object class. ">dynamix::object</a></code> &ndash; implicit casts to any of its mixins are impossible. That aside, the hypothetical object from above will receive all of the methods from foo and bar, but while this is true for the <code><a class="el" href="classdynamix_1_1object.html" title="The main object class. ">dynamix::object</a></code> with such mixins, a compilation error cannot be generated if a message is called that the object can't handle. A runtime error will be generated instead, which is the norm in similar libraries, but is harder to catch and debug than it is with plain multiple inheritance.</li>
 <li><b>Memory overhead per type</b>: Each unique combination of mixins is internally represented by a type, which has type metadata &ndash; for example an internal alternative to a virtual table. The type metadata can take up to two kilobytes of memory. Unless a type is instantiated its metadata won't be created, but still if you expect to have a huge variety of types, you may want to keep this in mind. Of course systems that are expected to have thousands of different object types, usually wouldn't care about a couple of extra megabytes of memory, but it could happen.</li>
 <li><b>Memory overhead per object</b>: An instance of an empty class that has multiple parents takes up memory equal to the sizes of all of its parents. This is inevitable. A <code>dynamix::objects</code> naturally takes up the same amount plus an additional pointer for the type metadata, plus N pointers used for the special <code>dm_this</code> pointer, where N is equal to the number of mixins within. So, in short, the memory overhead of an object composed on N mixins, is N+1 times <code>sizeof(intptr_t)</code> ((N+1) * 8 bytes on a 64 bit system).</li>
 <li><b>Speed of message calls</b>: A message call is slower than a regular non-virtual method call. Exactly how much is very hard to estimate, since this depends very much on cache locality, but a message call can easily be compared to a <code>std::function</code> call in terms of speed, which in most (but not all) cases is a negligible overhead.</li>
@@ -221,7 +221,7 @@ Comparison with Ruby mixins </h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jun 27 2016 23:18:18 for DynaMix by
+    <li class="footer">Generated on Sun Jan 15 2017 23:24:05 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

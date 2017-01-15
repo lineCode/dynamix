@@ -2,6 +2,7 @@ var searchData=
 [
   ['mandatory_5fmixin',['mandatory_mixin',['../classdynamix_1_1mandatory__mixin.html',1,'dynamix']]],
   ['mandatory_5fmixin_5fimpl',['mandatory_mixin_impl',['../classdynamix_1_1internal_1_1mandatory__mixin__impl.html',1,'dynamix::internal']]],
+  ['mean',['mean',['../classdynamix_1_1combinators_1_1mean.html',1,'dynamix::combinators']]],
   ['message_2ehpp',['message.hpp',['../message_8hpp.html',1,'']]],
   ['message_5fdefault_5fimpl_5fregistrator',['message_default_impl_registrator',['../structdynamix_1_1internal_1_1message__default__impl__registrator.html',1,'dynamix::internal']]],
   ['message_5ffeature_5ftag',['message_feature_tag',['../structdynamix_1_1internal_1_1message__feature__tag.html',1,'dynamix::internal']]],

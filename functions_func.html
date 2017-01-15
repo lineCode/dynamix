@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.1</span>
+   &#160;<span id="projectnumber">1.0.2</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -138,6 +138,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>add_result()
 : <a class="el" href="classdynamix_1_1combinators_1_1boolean__and.html#abb31f52e26986648eca8ae49ae7551f5">dynamix::combinators::boolean_and&lt; MessageReturnType &gt;</a>
 , <a class="el" href="classdynamix_1_1combinators_1_1boolean__or.html#a224ca4304ec97e4492f8f66f5ce486ab">dynamix::combinators::boolean_or&lt; MessageReturnType &gt;</a>
+, <a class="el" href="classdynamix_1_1combinators_1_1mean.html#ae2ae8131d93c127f78a13660ca52e63d">dynamix::combinators::mean&lt; MessageReturnType &gt;</a>
 , <a class="el" href="classdynamix_1_1combinators_1_1sum.html#ab303b20b209d4d4b9853624e723ecc32">dynamix::combinators::sum&lt; MessageReturnType &gt;</a>
 </li>
 <li>alloc_mixin()
@@ -175,6 +176,15 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 </li>
 <li>clear_all_implementing()
 : <a class="el" href="classdynamix_1_1mixin__collection.html#a90b2e3595d6ee1ad9fefb1e68211d235">dynamix::mixin_collection</a>
+</li>
+<li>copy()
+: <a class="el" href="classdynamix_1_1object.html#ad853b6f2f29cea857d8b8d8d0eb0485a">dynamix::object</a>
+</li>
+<li>copy_from()
+: <a class="el" href="classdynamix_1_1object.html#adf5cfe19ba91115d0512a94697320c2f">dynamix::object</a>
+</li>
+<li>copy_matching_from()
+: <a class="el" href="classdynamix_1_1object.html#aff534c25d83fc9ea7ca94d1a413033be">dynamix::object</a>
 </li>
 </ul>
 
@@ -249,6 +259,9 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>object_type_mutation()
 : <a class="el" href="classdynamix_1_1object__type__mutation.html#af33dd96688c0bc5fbf7a9a39a0a0c257">dynamix::object_type_mutation</a>
 </li>
+<li>operator=()
+: <a class="el" href="classdynamix_1_1object.html#a2e82cb3b9a2b5dac8365d6282a2bb9c6">dynamix::object</a>
+</li>
 </ul>
 
 
@@ -259,17 +272,22 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <li>reset()
 : <a class="el" href="classdynamix_1_1combinators_1_1boolean__and.html#a77afa1ddbe62cc5238827d3ffa6054ca">dynamix::combinators::boolean_and&lt; MessageReturnType &gt;</a>
 , <a class="el" href="classdynamix_1_1combinators_1_1boolean__or.html#ac991a8167280e63e1fd097e7892a0dec">dynamix::combinators::boolean_or&lt; MessageReturnType &gt;</a>
+, <a class="el" href="classdynamix_1_1combinators_1_1mean.html#ab866f23448222adc9ed0109bc19384ea">dynamix::combinators::mean&lt; MessageReturnType &gt;</a>
 , <a class="el" href="classdynamix_1_1combinators_1_1sum.html#ac2720d44ec3cd82cb03c0b0bf9bd44e9">dynamix::combinators::sum&lt; MessageReturnType &gt;</a>
 </li>
 <li>result()
 : <a class="el" href="classdynamix_1_1combinators_1_1boolean__and.html#aa73b47bdb80463dc285097035601f61f">dynamix::combinators::boolean_and&lt; MessageReturnType &gt;</a>
 , <a class="el" href="classdynamix_1_1combinators_1_1boolean__or.html#aee22e8adc2516803187568941fbccdff">dynamix::combinators::boolean_or&lt; MessageReturnType &gt;</a>
+, <a class="el" href="classdynamix_1_1combinators_1_1mean.html#a3e99d21630dd597c4e935938a7384dd4">dynamix::combinators::mean&lt; MessageReturnType &gt;</a>
 , <a class="el" href="classdynamix_1_1combinators_1_1sum.html#a60cb860ca0168039fb240e67af81b1cc">dynamix::combinators::sum&lt; MessageReturnType &gt;</a>
 </li>
 </ul>
 
 
 <h3><a class="anchor" id="index_s"></a>- s -</h3><ul>
+<li>set_num_results()
+: <a class="el" href="classdynamix_1_1combinators_1_1mean.html#a8a0c428d128e3faaa603295afbae6b63">dynamix::combinators::mean&lt; MessageReturnType &gt;</a>
+</li>
 <li>set_source()
 : <a class="el" href="classdynamix_1_1object__type__mutation.html#a2cfec7729dafa0d66366a768547a9bdf">dynamix::object_type_mutation</a>
 </li>
@@ -283,10 +301,10 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 : <a class="el" href="classdynamix_1_1object__type__mutation.html#a79d8cbfbfde17336587561b0d0e0810e">dynamix::object_type_mutation</a>
 </li>
 <li>start_removing()
-: <a class="el" href="classdynamix_1_1object__type__mutation.html#ab293c80c5627f5a81a30064c30ddd3a1">dynamix::object_type_mutation</a>
+: <a class="el" href="classdynamix_1_1object__type__mutation.html#a4f7a0166e229cbed3ccd30682248fad8">dynamix::object_type_mutation</a>
 </li>
 <li>stop_adding()
-: <a class="el" href="classdynamix_1_1object__type__mutation.html#a59977b4011adadcfa28f002b7178a810">dynamix::object_type_mutation</a>
+: <a class="el" href="classdynamix_1_1object__type__mutation.html#add83b2a2cba34fdbc2473f7e781fee0e">dynamix::object_type_mutation</a>
 </li>
 <li>stop_removing()
 : <a class="el" href="classdynamix_1_1object__type__mutation.html#acd695a15746ec11cbdc6aadd5820005e">dynamix::object_type_mutation</a>
@@ -297,7 +315,7 @@ $(document).ready(function(){initNavTree('functions_func.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jun 27 2016 23:18:18 for DynaMix by
+    <li class="footer">Generated on Sun Jan 15 2017 23:24:06 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>
