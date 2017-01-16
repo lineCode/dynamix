@@ -1,5 +1,6 @@
 var NAVTREEINDEX1 =
 {
+"classdynamix_1_1object__type__mutation.html#acd695a15746ec11cbdc6aadd5820005e":[11,0,0,18,13],
 "classdynamix_1_1object__type__mutation.html#add83b2a2cba34fdbc2473f7e781fee0e":[11,0,0,18,16],
 "classdynamix_1_1object__type__mutation.html#add8475ff67e6374e6656386dfde183ea":[11,0,0,18,25],
 "classdynamix_1_1object__type__mutation.html#aeaaac273f649d598818557e1ff585bfe":[11,0,0,18,10],
