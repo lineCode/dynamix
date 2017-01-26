@@ -14,7 +14,7 @@ var searchData=
   ['mixin_5fallocator',['mixin_allocator',['../classdynamix_1_1mixin__allocator.html',1,'dynamix']]],
   ['mixin_5fcollection',['mixin_collection',['../classdynamix_1_1mixin__collection.html',1,'dynamix']]],
   ['mixin_5fdata_5fin_5fobject',['mixin_data_in_object',['../classdynamix_1_1internal_1_1mixin__data__in__object.html',1,'dynamix::internal']]],
-  ['mixin_5fdata_5fsize',['mixin_data_size',['../classdynamix_1_1global__allocator.html#a65971508f61dd8d55b71f47ad861e835',1,'dynamix::global_allocator']]],
+  ['mixin_5fdata_5fsize',['mixin_data_size',['../classdynamix_1_1global__allocator.html#a62df266a482dbe66dd81a043695477b5',1,'dynamix::global_allocator']]],
   ['mixin_5ftype_5finfo',['mixin_type_info',['../classdynamix_1_1internal_1_1mixin__type__info.html',1,'dynamix::internal']]],
   ['mixin_5ftype_5finfo_2ehpp',['mixin_type_info.hpp',['../mixin__type__info_8hpp.html',1,'']]],
   ['mixin_5ftype_5finfo_5finstance',['mixin_type_info_instance',['../structdynamix_1_1internal_1_1mixin__type__info__instance.html',1,'dynamix::internal']]],

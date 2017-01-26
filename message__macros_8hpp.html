@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.2</span>
+   &#160;<span id="projectnumber">1.0.3</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -129,6 +129,12 @@ Macros</h2></td></tr>
 <tr class="memitem:a2a42614952ae7f7d50b4c995213be4f5"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a2a42614952ae7f7d50b4c995213be4f5"></a>
 #define&#160;</td><td class="memItemRight" valign="bottom"><b>DYNAMIX_DEFAULT_IMPL_STRUCT</b>(message_name)&#160;&#160;&#160;_DYNAMIX_PP_CAT(message_name, _default_impl_t)</td></tr>
 <tr class="separator:a2a42614952ae7f7d50b4c995213be4f5"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a0e9f75f0baf447c8d059f58122d182ec"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="a0e9f75f0baf447c8d059f58122d182ec"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>_DYNAMIX_MESSAGE_ARG_ERROR</b>&#160;&#160;&#160;static_assert(false, &quot;DynaMix macro called with a bad number of arguments&quot;)</td></tr>
+<tr class="separator:a0e9f75f0baf447c8d059f58122d182ec"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:ae66ceabc3539912d108ac48461de4d12"><td class="memItemLeft" align="right" valign="top"><a class="anchor" id="ae66ceabc3539912d108ac48461de4d12"></a>
+#define&#160;</td><td class="memItemRight" valign="bottom"><b>_DYNAMIX_VA_ARGS_PROXY</b>(MACRO,  args)&#160;&#160;&#160;MACRO args</td></tr>
+<tr class="separator:ae66ceabc3539912d108ac48461de4d12"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a087ed796dc1f79281ad4c034b91c22fa"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message__macros_8hpp.html#a087ed796dc1f79281ad4c034b91c22fa">DYNAMIX_MESSAGE_N</a>(return_type,  message,  args)</td></tr>
 <tr class="separator:a087ed796dc1f79281ad4c034b91c22fa"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:a76c4bb104e0fc7bd3bc62c7293750597"><td class="memItemLeft" align="right" valign="top">#define&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="message__macros_8hpp.html#a76c4bb104e0fc7bd3bc62c7293750597">DYNAMIX_DEFINE_MESSAGE_N_WITH_DEFAULT_IMPL</a>(return_type,  message_name,  args)</td></tr>
@@ -245,7 +251,7 @@ Macros</h2></td></tr>
         </tr>
       </table>
 </div><div class="memdoc">
-<b>Value:</b><div class="fragment"><div class="line"><span class="comment">/* create a feature getter for the message */</span> \</div><div class="line">    <a class="code" href="classdynamix_1_1feature.html">::dynamix::feature</a>&amp; _dynamix_get_mixin_feature(<span class="keyword">const</span> _DYNAMIX_MESSAGE_STRUCT_NAME(message_name)*) \</div><div class="line">    { \</div><div class="line">        return ::dynamix::internal::feature_instance&lt;_DYNAMIX_MESSAGE_STRUCT_NAME(message_name)&gt;::the_feature(); \</div><div class="line">    } \</div><div class="line">    <span class="comment">/* create a feature registrator */</span> \</div><div class="line">    void _dynamix_register_mixin_feature(<span class="keyword">const</span> _DYNAMIX_MESSAGE_STRUCT_NAME(message_name)*) \</div><div class="line">    { \</div><div class="line">        ::dynamix::internal::domain::instance(). \</div><div class="line">            register_feature(::<a class="code" href="structdynamix_1_1internal_1_1feature__instance.html">dynamix::internal::feature_instance</a>&lt;_DYNAMIX_MESSAGE_STRUCT_NAME(message_name)&gt;::the_feature()); \</div><div class="line">    } \</div><div class="line">    <span class="comment">/* provide a tag instance */</span> \</div><div class="line">    _DYNAMIX_MESSAGE_STRUCT_NAME(message_name) * _DYNAMIX_MESSAGE_TAG(message_name)</div></div><!-- fragment --><p>The macro for defining a message. Use it once per message in a compilation unit (.cpp file) </p>
+<b>Value:</b><div class="fragment"><div class="line"><span class="comment">/* create feature getters for the message */</span> \</div><div class="line">    <a class="code" href="classdynamix_1_1feature.html">::dynamix::feature</a>&amp; _dynamix_get_mixin_feature_safe(<span class="keyword">const</span> _DYNAMIX_MESSAGE_STRUCT_NAME(message_name)*) \</div><div class="line">    { \</div><div class="line">        return ::dynamix::internal::feature_instance&lt;_DYNAMIX_MESSAGE_STRUCT_NAME(message_name)&gt;::the_feature_safe(); \</div><div class="line">    } \</div><div class="line">    const ::dynamix::feature&amp; _dynamix_get_mixin_feature_fast(<span class="keyword">const</span> _DYNAMIX_MESSAGE_STRUCT_NAME(message_name)*) \</div><div class="line">    { \</div><div class="line">        return ::dynamix::internal::feature_instance&lt;_DYNAMIX_MESSAGE_STRUCT_NAME(message_name)&gt;::the_feature_fast(); \</div><div class="line">    } \</div><div class="line">    <span class="comment">/* create a feature registrator */</span> \</div><div class="line">    void _dynamix_register_mixin_feature(<span class="keyword">const</span> _DYNAMIX_MESSAGE_STRUCT_NAME(message_name)*) \</div><div class="line">    { \</div><div class="line">        ::dynamix::internal::domain::safe_instance(). \</div><div class="line">            register_feature(::<a class="code" href="structdynamix_1_1internal_1_1feature__instance.html">dynamix::internal::feature_instance</a>&lt;_DYNAMIX_MESSAGE_STRUCT_NAME(message_name)&gt;::the_feature_safe()); \</div><div class="line">    } \</div><div class="line">    <span class="comment">/* provide a tag instance */</span> \</div><div class="line">    _DYNAMIX_MESSAGE_STRUCT_NAME(message_name) * _DYNAMIX_MESSAGE_TAG(message_name)</div></div><!-- fragment --><p>The macro for defining a message. Use it once per message in a compilation unit (.cpp file) </p>
 
 </div>
 </div>
@@ -255,7 +261,7 @@ Macros</h2></td></tr>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><a class="el" href="dir_d44c64559bbebec7f509842c48db8b23.html">include</a></li><li class="navelem"><a class="el" href="dir_1311ec3b1f3820375d35d4193290438d.html">dynamix</a></li><li class="navelem"><a class="el" href="message__macros_8hpp.html">message_macros.hpp</a></li>
-    <li class="footer">Generated on Mon Jan 16 2017 21:27:10 for DynaMix by
+    <li class="footer">Generated on Thu Jan 26 2017 22:38:36 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

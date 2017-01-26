@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.2</span>
+   &#160;<span id="projectnumber">1.0.3</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -105,29 +105,29 @@ $(document).ready(function(){initNavTree('roadmap.html','');});
 <div class="contents">
 <div class="textblock"><p>Here is a list of planned features and events for the library: (The authors write it in their own free time, so concrete dates are hard to estimate)</p>
 <ul>
-<li>Soon<ul>
-<li>Call mixin constructors when mutating object or constructing them via object type templates. Sample usage: <code>mutate(obj).add&lt;mixin&gt;("foo", param2).add&lt;other_mixin&gt;(42)</code></li>
-<li>Message bids &ndash; allow mixins to "bid" for different messages (analogous to <code>priority</code> for unicasts, but hides implementations on multicast messages)</li>
+<li>Possibly soon<ul>
+<li>Case-study: A demo project, that better illustrates the libraries functionalities in a "real life" scenario. Complete with a document which gives problems for motivation and their DynaMix solutions.</li>
 </ul>
 </li>
 <li>Not soon, but with concrete idea of how to be done:<ul>
-<li>Case-study: A demo project, that better illustrates the libraries functionalities in a "real life" scenario. Complete with a document which gives problems for motivation and their DynaMix solutions.</li>
+<li>Call mixin constructors when mutating object or constructing them via object type templates. Sample usage: <code>mutate(obj).add&lt;mixin&gt;("foo", param2).add&lt;other_mixin&gt;(42)</code></li>
+<li>Message bids &ndash; allow mixins to "bid" for different messages (analogous to <code>priority</code> for unicasts, but hides implementations on multicast messages)</li>
 <li>Optimize mutation process: less allocations. Design special <code>mixin_collection</code> for the process, that can be preallocated (or that uses a buffer that's allocated only once) and has <code>reserve</code>. Allow reuse of <code>single_object_mutator</code>.</li>
 <li>Create some library allocators: one with mem pages (vector memory), a per-frame style allocator, object pool style <code>std::list</code> one.</li>
 <li>private messages/mixins &ndash; messages/mixins that are not used outside of a module - leave more room for other messages/mixins</li>
 <li>Add a new mixin feature <code>fact</code>. Facts are static const variables in a mixin. No multicasts. No virtual tables.</li>
-<li>Reflection. Create objects with mixins by string. Call messages by string.</li>
+<li>Reflection. Call messages by string.</li>
 <li>"Static" mixins. As long as they're not mutated in or out, it provides a faster message execution.</li>
-<li>Make use of the fact that a BIG execution time improvement can be made if a user has no mixins or messages defined in a dynamic library (and has no plans to add such)</li>
+<li>Make use of the fact that a BIG performance improvement can be made if a user has no mixins or messages defined in a dynamic library (and has no plans to add such)</li>
 <li>Reduce library memory footprint</li>
 <li>Vectorized mixin/message memory: Instead of having a maximal number of them, grow the mixin_type_info/message_info buffers by that number. Might lead to slower mutations.</li>
 <li>Unused type garbage collector. When no objects exist of a given type it can be garbage collected, saving up to a kilobyte of memory.</li>
 <li>Create a preprocessing tool (like Qt's moc) that can be used instead of the macros for mixin and message definition.</li>
+<li>Allow allocators to move mixins.</li>
 </ul>
 </li>
 <li>When humankind becomes a Kardashev type two civilization:<ul>
 <li>A way to mutate static mixins in and out. Slight mutation execution penalty.</li>
-<li>Some magic to make it work even faster.</li>
 <li>Mixin/Message domains &ndash; sets of mixins and messages that cannot be mixed. Will throw a runtime error when trying to combine certain mixins or messages. </li>
 </ul>
 </li>
@@ -137,7 +137,7 @@ $(document).ready(function(){initNavTree('roadmap.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Mon Jan 16 2017 21:27:10 for DynaMix by
+    <li class="footer">Generated on Thu Jan 26 2017 22:38:37 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

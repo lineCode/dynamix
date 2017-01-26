@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.2</span>
+   &#160;<span id="projectnumber">1.0.3</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -143,8 +143,8 @@ Static Public Member Functions</h2></td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pub-static-attribs"></a>
 Static Public Attributes</h2></td></tr>
-<tr class="memitem:a65971508f61dd8d55b71f47ad861e835"><td class="memItemLeft" align="right" valign="top">static const size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamix_1_1global__allocator.html#a65971508f61dd8d55b71f47ad861e835">mixin_data_size</a></td></tr>
-<tr class="separator:a65971508f61dd8d55b71f47ad861e835"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:a62df266a482dbe66dd81a043695477b5"><td class="memItemLeft" align="right" valign="top">static constexpr size_t&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamix_1_1global__allocator.html#a62df266a482dbe66dd81a043695477b5">mixin_data_size</a> = sizeof(<a class="el" href="classdynamix_1_1internal_1_1mixin__data__in__object.html">internal::mixin_data_in_object</a>)</td></tr>
+<tr class="separator:a62df266a482dbe66dd81a043695477b5"><td class="memSeparator" colspan="2">&#160;</td></tr>
 </table><table class="memberdecls">
 <tr class="heading"><td colspan="2"><h2 class="groupheader"><a name="pro-attribs"></a>
 Protected Attributes</h2></td></tr>
@@ -179,7 +179,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_has_allocated</b></t
 </div><div class="memdoc">
 <p>Pure virtual. Should return a valid pointer to an array with the size of <code>count</code> <code><a class="el" href="classdynamix_1_1internal_1_1mixin__data__in__object.html">mixin_data_in_object</a></code> instances.</p>
 <p>Use the static constant <code>mixin_data_size</code> to get the size of a single <code><a class="el" href="classdynamix_1_1internal_1_1mixin__data__in__object.html">mixin_data_in_object</a></code></p>
-<dl class="section user"><dt>Example:</dt><dd><div class="fragment"><div class="line"><span class="keywordtype">char</span>* my_allocator::alloc_mixin_data(<span class="keywordtype">size_t</span> count)</div><div class="line">{</div><div class="line">    <span class="keywordflow">return</span> <span class="keyword">new</span> <span class="keywordtype">char</span>[count * <a class="code" href="classdynamix_1_1global__allocator.html#a65971508f61dd8d55b71f47ad861e835">mixin_data_size</a>];</div><div class="line">}</div></div><!-- fragment --> </dd></dl>
+<dl class="section user"><dt>Example:</dt><dd><div class="fragment"><div class="line"><span class="keywordtype">char</span>* my_allocator::alloc_mixin_data(<span class="keywordtype">size_t</span> count)</div><div class="line">{</div><div class="line">    <span class="keywordflow">return</span> <span class="keyword">new</span> <span class="keywordtype">char</span>[count * <a class="code" href="classdynamix_1_1global__allocator.html#a62df266a482dbe66dd81a043695477b5">mixin_data_size</a>];</div><div class="line">}</div></div><!-- fragment --> </dd></dl>
 
 <p>Implements <a class="el" href="classdynamix_1_1global__allocator.html#a4a695a6322e72b37f4a2b1fc745f9b4f">dynamix::global_allocator</a>.</p>
 
@@ -363,7 +363,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_has_allocated</b></t
 </div>
 </div>
 <h2 class="groupheader">Member Data Documentation</h2>
-<a class="anchor" id="a65971508f61dd8d55b71f47ad861e835"></a>
+<a class="anchor" id="a62df266a482dbe66dd81a043695477b5"></a>
 <div class="memitem">
 <div class="memproto">
 <table class="mlabels">
@@ -371,7 +371,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_has_allocated</b></t
   <td class="mlabels-left">
       <table class="memname">
         <tr>
-          <td class="memname">const size_t dynamix::global_allocator::mixin_data_size</td>
+          <td class="memname">constexpr size_t dynamix::global_allocator::mixin_data_size = sizeof(<a class="el" href="classdynamix_1_1internal_1_1mixin__data__in__object.html">internal::mixin_data_in_object</a>)</td>
         </tr>
       </table>
   </td>
@@ -394,7 +394,7 @@ bool&#160;</td><td class="memItemRight" valign="bottom"><b>_has_allocated</b></t
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>dynamix</b></li><li class="navelem"><b>internal</b></li><li class="navelem"><a class="el" href="classdynamix_1_1internal_1_1default__allocator.html">default_allocator</a></li>
-    <li class="footer">Generated on Mon Jan 16 2017 21:27:13 for DynaMix by
+    <li class="footer">Generated on Thu Jan 26 2017 22:38:40 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>
