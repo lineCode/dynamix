@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.3</span>
+   &#160;<span id="projectnumber">1.0.4</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -110,9 +110,7 @@ $(document).ready(function(){initNavTree('appendix.html','');});
 <li class="level2"><a href="#more_ecs">Further reading </a></li>
 </ul>
 </li>
-<li class="level1"><a href="#app_vs_watch">Appendix B. Visual Studio watch visualizers </a><ul><li class="level2"><a href="#natvis">Modern: .natvis files. VS 2012 and later </a></li>
-<li class="level2"><a href="#autoexp">Classic: autoexp.dat. VS 2003 and later </a></li>
-<li class="level2"><a href="#watch_mixin">Watching a mixin </a></li>
+<li class="level1"><a href="#app_vs_watch">Appendix B. Visual Studio watch visualizers </a><ul><li class="level2"><a href="#watch_mixin">Watching a mixin </a></li>
 </ul>
 </li>
 </ul>
@@ -159,10 +157,7 @@ Further reading </h2>
 </ul>
 <h1><a class="anchor" id="app_vs_watch"></a>
 Appendix B. Visual Studio watch visualizers </h1>
-<p>If you're using Microsoft Visual Studio, you can install special watch visualizers which will make adding <code><a class="el" href="classdynamix_1_1object.html" title="The main object class. ">dynamix::object</a></code> in a watch window a better experience.</p>
-<p>There are two ways to do this, which will work on both the full and express versions of Visual Studio.</p>
-<h2><a class="anchor" id="natvis"></a>
-Modern: .natvis files. VS 2012 and later </h2>
+<p>If you're using Microsoft Visual Studio 2015, you can install a special watch visualizer which will make adding <code><a class="el" href="classdynamix_1_1object.html" title="The main object class. ">dynamix::object</a></code> in a watch window a better experience.</p>
 <p>The result when adding a watch on an object should resemble this:</p>
 <div class="image">
 <img src="vs_natvis.png" alt="vs_natvis.png"/>
@@ -174,25 +169,9 @@ natvis file</div></div>
 <li>To install for your user only, copy it to <code>&lt;Documents&gt;\&lt;Visual Studio Version&gt;\Visualizers</code>. If the directory doesn't exist, create it manually.</li>
 <li>To install for all users, copy it to <code>VSINSTALLDIR%\Common7\Packages\Debugger\Visualizers</code>. You will need administrator access to do this.</li>
 </ul>
-<h2><a class="anchor" id="autoexp"></a>
-Classic: autoexp.dat. VS 2003 and later </h2>
-<p>The result when adding a watch on an object should resemble this:</p>
-<div class="image">
-<img src="vs_autoexp.png" alt="vs_autoexp.png"/>
-<div class="caption">
-autoexp.dat</div></div>
-<p> To install this visualizer:</p>
-<ul>
-<li>Locate <code>autoexp.txt</code> in your DynaMix installation. It should be in the <code>tools</code> subdirectory.</li>
-<li>Open it in a text editor</li>
-<li>Open <code>VSINSTALLDIR%\Common7\Packages\Debugger\autoexp.dat</code> in a text editor</li>
-<li>Typically it will end with a <code>[hresult]</code> section.</li>
-<li>Paste the entire content of <code>autoexp.txt</code> /just before/ the line <code>[hresult]</code></li>
-</ul>
-<p>To use this visualizer with Visual Studio versions 2012 or newer, you should also go to in your menus to <code>Tools &gt; Options &gt; Debugging &gt; Edit and Continue</code> and there check <code>Enable native Edit and Continue</code>. Warning: This will also disable any natvis visualizers you might have installed.</p>
 <h2><a class="anchor" id="watch_mixin"></a>
 Watching a mixin </h2>
-<p>No matter which (if any) of these visualizers you use, to watch concrete mixin from an object, you should add a new watch where you explicitly cast the address to the correct mixin type. The visualizers only help you quickly find the address and the target type. They don't (and unfortunately can't) perform the cast.</p>
+<p>To watch concrete mixin from an object, you should add a new watch where you explicitly cast the address to the correct mixin type. The visualizer only helps you quickly find the address and the target type. It doesn't (and unfortunately can't) perform the cast.</p>
 <p>If you perform the cast correctly, the result will resemble this:</p>
 <div class="image">
 <img src="vs_watch.png" alt="vs_watch.png"/>
@@ -203,7 +182,7 @@ watch</div></div>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jan 26 2017 22:38:37 for DynaMix by
+    <li class="footer">Generated on Sat Feb 25 2017 22:08:56 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

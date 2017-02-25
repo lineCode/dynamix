@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.3</span>
+   &#160;<span id="projectnumber">1.0.4</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -103,7 +103,12 @@ $(document).ready(function(){initNavTree('revisions.html','');});
 <div class="title">Revision History </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1>DynaMix 1.0.3 </h1>
+<div class="textblock"><h1>DynaMix 1.0.4 </h1>
+<ul>
+<li>Added check for object copy safety.</li>
+<li>Added two new common mutation rules <code>bundled_mixins</code> and <code>dependent_mixins</code>.</li>
+</ul>
+<h1>DynaMix 1.0.3 </h1>
 <ul>
 <li>Added a optional header with message macros with no arity. Its use is not recommended because it breaks all known code-completion tools.</li>
 <li>Optimized around local static variables in feature registration and the domain singleton. As a result mutation is about 5% faster and, more importantly, message calls are about 12% faster.</li>
@@ -130,7 +135,7 @@ $(document).ready(function(){initNavTree('revisions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jan 26 2017 22:38:37 for DynaMix by
+    <li class="footer">Generated on Sat Feb 25 2017 22:08:56 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

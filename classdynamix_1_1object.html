@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.3</span>
+   &#160;<span id="projectnumber">1.0.4</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -153,6 +153,8 @@ Public Member Functions</h2></td></tr>
 <tr class="separator:adf5cfe19ba91115d0512a94697320c2f"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:aff534c25d83fc9ea7ca94d1a413033be"><td class="memItemLeft" align="right" valign="top">void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamix_1_1object.html#aff534c25d83fc9ea7ca94d1a413033be">copy_matching_from</a> (const <a class="el" href="classdynamix_1_1object.html">object</a> &amp;o)</td></tr>
 <tr class="separator:aff534c25d83fc9ea7ca94d1a413033be"><td class="memSeparator" colspan="2">&#160;</td></tr>
+<tr class="memitem:aaf7200c2a05bae7937cede2ea15f6b75"><td class="memItemLeft" align="right" valign="top">bool&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="classdynamix_1_1object.html#aaf7200c2a05bae7937cede2ea15f6b75">copyable</a> () const </td></tr>
+<tr class="separator:aaf7200c2a05bae7937cede2ea15f6b75"><td class="memSeparator" colspan="2">&#160;</td></tr>
 <tr class="memitem:af9d38e040bf4f91646433f78d663a478"><td class="memTemplParams" colspan="2"><a class="anchor" id="af9d38e040bf4f91646433f78d663a478"></a>
 template&lt;typename Mixin &gt; </td></tr>
 <tr class="memitem:af9d38e040bf4f91646433f78d663a478"><td class="memTemplItemLeft" align="right" valign="top">bool&#160;</td><td class="memTemplItemRight" valign="bottom"><a class="el" href="classdynamix_1_1object.html#af9d38e040bf4f91646433f78d663a478">has</a> () const </td></tr>
@@ -215,7 +217,7 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Explicit assignment from existing object Will also change the type of the target to the source type. Will call assignment operators for mixins that exist in both. Will copy-construct new mixins for this. Will destroy mixins that don't exist in source. It will not, however, match asssignment operators for different mixin types which have such defined between them, </p>
+<p>Explicit assignment from existing object. Will also change the type of the target to the source type. Will call assignment operators for mixins that exist in both. Will copy-construct new mixins for this. Will destroy mixins that don't exist in source. It will not, however, match asssignment operators for different mixin types which have such defined between them, </p>
 
 </div>
 </div>
@@ -232,7 +234,23 @@ void&#160;</td><td class="memItemRight" valign="bottom"><a class="el" href="clas
         </tr>
       </table>
 </div><div class="memdoc">
-<p>Assignment of mixins that exist in both objects Will not change the type of the target. Will call assignment operators for mixins that exist in both objects. It will not, however, match asssignment operators for different mixin types which have such defined between them, </p>
+<p>Assignment of mixins that exist in both objects. Will not change the type of the target. Will call assignment operators for mixins that exist in both objects. It will not, however, match asssignment operators for different mixin types which have such defined between them, </p>
+
+</div>
+</div>
+<a class="anchor" id="aaf7200c2a05bae7937cede2ea15f6b75"></a>
+<div class="memitem">
+<div class="memproto">
+      <table class="memname">
+        <tr>
+          <td class="memname">bool dynamix::object::copyable </td>
+          <td>(</td>
+          <td class="paramname"></td><td>)</td>
+          <td> const</td>
+        </tr>
+      </table>
+</div><div class="memdoc">
+<p>Checks whether all of the object's mixins have copy-constructors and assignment operators. Returns false if either is missing from at least one of its mixins (note that there might be cases where copy_from or copy_matching_from won't throw even though this function returns false). </p>
 
 </div>
 </div>
@@ -331,7 +349,7 @@ template&lt;typename Mixin &gt; </div>
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
     <li class="navelem"><b>dynamix</b></li><li class="navelem"><a class="el" href="classdynamix_1_1object.html">object</a></li>
-    <li class="footer">Generated on Thu Jan 26 2017 22:38:38 for DynaMix by
+    <li class="footer">Generated on Sat Feb 25 2017 22:08:57 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

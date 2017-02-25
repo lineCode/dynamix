@@ -27,6 +27,8 @@ var hierarchy =
     [ "dynamix::internal::message_priority< Message >", "structdynamix_1_1internal_1_1message__priority.html", null ],
     [ "dynamix::internal::mixin_data_in_object", "classdynamix_1_1internal_1_1mixin__data__in__object.html", null ],
     [ "dynamix::mutation_rule", "classdynamix_1_1mutation__rule.html", [
+      [ "dynamix::bundled_mixins", "classdynamix_1_1bundled__mixins.html", null ],
+      [ "dynamix::dependent_mixins", "classdynamix_1_1dependent__mixins.html", null ],
       [ "dynamix::internal::deprecated_mixin_impl", "classdynamix_1_1internal_1_1deprecated__mixin__impl.html", [
         [ "dynamix::deprecated_mixin< Mixin >", "classdynamix_1_1deprecated__mixin.html", null ]
       ] ],
@@ -52,6 +54,8 @@ var hierarchy =
         [ "dynamix::single_object_mutator", "classdynamix_1_1single__object__mutator.html", null ]
       ] ],
       [ "dynamix::mixin_collection", "classdynamix_1_1mixin__collection.html", [
+        [ "dynamix::bundled_mixins", "classdynamix_1_1bundled__mixins.html", null ],
+        [ "dynamix::dependent_mixins", "classdynamix_1_1dependent__mixins.html", null ],
         [ "dynamix::internal::object_type_info", "classdynamix_1_1internal_1_1object__type__info.html", null ],
         [ "dynamix::mutually_exclusive_mixins", "classdynamix_1_1mutually__exclusive__mixins.html", null ]
       ] ]

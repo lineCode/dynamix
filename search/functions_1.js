@@ -6,5 +6,6 @@ var searchData=
   ['clear_5fall_5fimplementing',['clear_all_implementing',['../classdynamix_1_1mixin__collection.html#a90b2e3595d6ee1ad9fefb1e68211d235',1,'dynamix::mixin_collection']]],
   ['copy',['copy',['../classdynamix_1_1object.html#ad853b6f2f29cea857d8b8d8d0eb0485a',1,'dynamix::object']]],
   ['copy_5ffrom',['copy_from',['../classdynamix_1_1object.html#adf5cfe19ba91115d0512a94697320c2f',1,'dynamix::object']]],
-  ['copy_5fmatching_5ffrom',['copy_matching_from',['../classdynamix_1_1object.html#aff534c25d83fc9ea7ca94d1a413033be',1,'dynamix::object']]]
+  ['copy_5fmatching_5ffrom',['copy_matching_from',['../classdynamix_1_1object.html#aff534c25d83fc9ea7ca94d1a413033be',1,'dynamix::object']]],
+  ['copyable',['copyable',['../classdynamix_1_1object.html#aaf7200c2a05bae7937cede2ea15f6b75',1,'dynamix::object']]]
 ];

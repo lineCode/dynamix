@@ -35,6 +35,7 @@ var NAVTREE =
       ] ],
       [ "Message priority ", "glossary.html#priority", null ],
       [ "Multicast result combinators ", "glossary.html#combinators", null ],
+      [ "Default message implementation ", "glossary.html#defaultimpl", null ],
       [ "Mutations ", "glossary.html#mutation", [
         [ "Mutation rules ", "glossary.html#mrules", null ]
       ] ]
@@ -101,8 +102,6 @@ var NAVTREE =
         [ "Further reading ", "appendix.html#more_ecs", null ]
       ] ],
       [ "Appendix B. Visual Studio watch visualizers ", "appendix.html#app_vs_watch", [
-        [ "Modern: .natvis files. VS 2012 and later ", "appendix.html#natvis", null ],
-        [ "Classic: autoexp.dat. VS 2003 and later ", "appendix.html#autoexp", null ],
         [ "Watching a mixin ", "appendix.html#watch_mixin", null ]
       ] ]
     ] ],
@@ -129,7 +128,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classdynamix_1_1object__type__mutation.html#acd695a15746ec11cbdc6aadd5820005e"
+"classdynamix_1_1object__type__mutation.html#ab293c80c5627f5a81a30064c30ddd3a1"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';

@@ -10,6 +10,8 @@ var files =
     ] ],
     [ "common_mutation_rules.hpp", "common__mutation__rules_8hpp.html", [
       [ "mutually_exclusive_mixins", "classdynamix_1_1mutually__exclusive__mixins.html", "classdynamix_1_1mutually__exclusive__mixins" ],
+      [ "bundled_mixins", "classdynamix_1_1bundled__mixins.html", "classdynamix_1_1bundled__mixins" ],
+      [ "dependent_mixins", "classdynamix_1_1dependent__mixins.html", "classdynamix_1_1dependent__mixins" ],
       [ "mandatory_mixin_impl", "classdynamix_1_1internal_1_1mandatory__mixin__impl.html", "classdynamix_1_1internal_1_1mandatory__mixin__impl" ],
       [ "deprecated_mixin_impl", "classdynamix_1_1internal_1_1deprecated__mixin__impl.html", "classdynamix_1_1internal_1_1deprecated__mixin__impl" ],
       [ "substitute_mixin_impl", "classdynamix_1_1internal_1_1substitute__mixin__impl.html", "classdynamix_1_1internal_1_1substitute__mixin__impl" ],

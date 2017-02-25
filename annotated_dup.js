@@ -34,6 +34,8 @@ var annotated_dup =
       [ "bad_message_call", "classdynamix_1_1bad__message__call.html", null ],
       [ "bad_mutation", "classdynamix_1_1bad__mutation.html", null ],
       [ "bad_mutation_source", "classdynamix_1_1bad__mutation__source.html", null ],
+      [ "bundled_mixins", "classdynamix_1_1bundled__mixins.html", "classdynamix_1_1bundled__mixins" ],
+      [ "dependent_mixins", "classdynamix_1_1dependent__mixins.html", "classdynamix_1_1dependent__mixins" ],
       [ "deprecated_mixin", "classdynamix_1_1deprecated__mixin.html", "classdynamix_1_1deprecated__mixin" ],
       [ "exception", "classdynamix_1_1exception.html", null ],
       [ "feature", "classdynamix_1_1feature.html", "classdynamix_1_1feature" ],

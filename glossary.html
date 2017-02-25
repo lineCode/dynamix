@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.3</span>
+   &#160;<span id="projectnumber">1.0.4</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -111,6 +111,7 @@ $(document).ready(function(){initNavTree('glossary.html','');});
 </li>
 <li class="level1"><a href="#priority">Message priority </a></li>
 <li class="level1"><a href="#combinators">Multicast result combinators </a></li>
+<li class="level1"><a href="#defaultimpl">Default message implementation </a></li>
 <li class="level1"><a href="#mutation">Mutations </a><ul><li class="level2"><a href="#mrules">Mutation rules </a></li>
 </ul>
 </li>
@@ -146,6 +147,9 @@ Multicast result combinators </h1>
 <p>When calling multicast messages, their return values are lost. Naturally, you can use an output parameter to collect those return values, but if you don't want to change existing methods, or if don't want to have the collection logic in them, the library provides a way to collect the return values externally.</p>
 <p>This happens with multicast result combinators.</p>
 <p>The library provides some common combinators, like <code><a class="el" href="classdynamix_1_1combinators_1_1boolean__or.html">dynamix::combinators::boolean_or</a></code>, <code><a class="el" href="classdynamix_1_1combinators_1_1boolean__and.html">dynamix::combinators::boolean_and</a></code>, and <code><a class="el" href="classdynamix_1_1combinators_1_1sum.html">dynamix::combinators::sum</a></code>. It also allows you to easily create your own, for whatever purpose you need.</p>
+<h1><a class="anchor" id="defaultimpl"></a>
+Default message implementation </h1>
+<p>Sometimes you want some messages to be valid for all objects. You could, of course, add them to a mixin and then add this mixin to every object, but the library provides an easier way to do this. You can define a message with a default implementation. You write the code at the message definition and it will be executed if no mixin within an object implements the message.</p>
 <h1><a class="anchor" id="mutation"></a>
 Mutations </h1>
 <p>A mutation changes the type of an object. You have to use some kind of mutator to give type to the object.</p>
@@ -160,7 +164,7 @@ Mutation rules </h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Jan 26 2017 22:38:37 for DynaMix by
+    <li class="footer">Generated on Sat Feb 25 2017 22:08:56 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

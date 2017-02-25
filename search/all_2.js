@@ -9,5 +9,6 @@ var searchData=
   ['config_2ehpp',['config.hpp',['../config_8hpp.html',1,'']]],
   ['copy',['copy',['../classdynamix_1_1object.html#ad853b6f2f29cea857d8b8d8d0eb0485a',1,'dynamix::object']]],
   ['copy_5ffrom',['copy_from',['../classdynamix_1_1object.html#adf5cfe19ba91115d0512a94697320c2f',1,'dynamix::object']]],
-  ['copy_5fmatching_5ffrom',['copy_matching_from',['../classdynamix_1_1object.html#aff534c25d83fc9ea7ca94d1a413033be',1,'dynamix::object']]]
+  ['copy_5fmatching_5ffrom',['copy_matching_from',['../classdynamix_1_1object.html#aff534c25d83fc9ea7ca94d1a413033be',1,'dynamix::object']]],
+  ['copyable',['copyable',['../classdynamix_1_1object.html#aaf7200c2a05bae7937cede2ea15f6b75',1,'dynamix::object']]]
 ];

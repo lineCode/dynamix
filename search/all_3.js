@@ -4,6 +4,7 @@ var searchData=
   ['dealloc_5fmixin_5fdata',['dealloc_mixin_data',['../classdynamix_1_1global__allocator.html#a59b2294e81dd7adf96c885d286a12c3b',1,'dynamix::global_allocator::dealloc_mixin_data()'],['../classdynamix_1_1internal_1_1default__allocator.html#a67bb2e3e007a0b0b53c016b2541e278a',1,'dynamix::internal::default_allocator::dealloc_mixin_data()']]],
   ['debugging_20with_20dynamix',['Debugging with DynaMix',['../debugging.html',1,'']]],
   ['default_5fallocator',['default_allocator',['../classdynamix_1_1internal_1_1default__allocator.html',1,'dynamix::internal']]],
+  ['dependent_5fmixins',['dependent_mixins',['../classdynamix_1_1dependent__mixins.html',1,'dynamix']]],
   ['deprecated_5fmixin',['deprecated_mixin',['../classdynamix_1_1deprecated__mixin.html',1,'dynamix']]],
   ['deprecated_5fmixin_5fimpl',['deprecated_mixin_impl',['../classdynamix_1_1internal_1_1deprecated__mixin__impl.html',1,'dynamix::internal']]],
   ['dm_5fthis',['dm_this',['../mixin_8hpp.html#a8396cc680f14240e8e91a5bfdce4917d',1,'mixin.hpp']]],
