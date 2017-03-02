@@ -21,10 +21,10 @@ var hierarchy =
     ] ],
     [ "dynamix::internal::has_set_num_results< Combinator >", "structdynamix_1_1internal_1_1has__set__num__results.html", null ],
     [ "dynamix::combinators::mean< MessageReturnType >", "classdynamix_1_1combinators_1_1mean.html", null ],
-    [ "dynamix::internal::message_default_impl_registrator< Message >", "structdynamix_1_1internal_1_1message__default__impl__registrator.html", null ],
     [ "dynamix::internal::message_feature_tag", "structdynamix_1_1internal_1_1message__feature__tag.html", null ],
     [ "dynamix::internal::message_for_mixin", "structdynamix_1_1internal_1_1message__for__mixin.html", null ],
     [ "dynamix::internal::message_priority< Message >", "structdynamix_1_1internal_1_1message__priority.html", null ],
+    [ "dynamix::internal::message_registrator< Message >", "structdynamix_1_1internal_1_1message__registrator.html", null ],
     [ "dynamix::internal::mixin_data_in_object", "classdynamix_1_1internal_1_1mixin__data__in__object.html", null ],
     [ "dynamix::mutation_rule", "classdynamix_1_1mutation__rule.html", [
       [ "dynamix::bundled_mixins", "classdynamix_1_1bundled__mixins.html", null ],

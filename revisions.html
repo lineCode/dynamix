@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.4</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -103,7 +103,20 @@ $(document).ready(function(){initNavTree('revisions.html','');});
 <div class="title">Revision History </div>  </div>
 </div><!--header-->
 <div class="contents">
-<div class="textblock"><h1>DynaMix 1.0.4 </h1>
+<div class="textblock"><h1>DynaMix 1.1.0 </h1>
+<ul>
+<li>Dropped support for an obscure optimization feature which allowed for the same mixins and messages to be defined multiple times in multiple modules (i.e. in a static library linked to those modules)</li>
+<li>Fixed bug with crashes when unloading and then reloading a plugin which defines a message.</li>
+<li>Fixed various bugs with unused (which no mixin features) messages:<ul>
+<li><code>obj.implements(unused_msg)</code> caused a crash</li>
+<li><code>unused(obj ...)</code> cause a crash (instead of exception)</li>
+<li>Crash when only a plugin uses the message</li>
+</ul>
+</li>
+<li>Added (optional) mutation thread safety; in that mutating two different objects in two different threads is now safe.</li>
+<li>Added optional additional metrics to object and mixin type data to show the number of objects and mixins, respectively, of a given type.</li>
+</ul>
+<h1>DynaMix 1.0.4 </h1>
 <ul>
 <li>Added check for object copy safety.</li>
 <li>Added two new common mutation rules <code>bundled_mixins</code> and <code>dependent_mixins</code>.</li>
@@ -135,7 +148,7 @@ $(document).ready(function(){initNavTree('revisions.html','');});
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Feb 25 2017 22:08:56 for DynaMix by
+    <li class="footer">Generated on Thu Mar 2 2017 23:18:17 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

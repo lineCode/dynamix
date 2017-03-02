@@ -32,7 +32,7 @@
  <tr style="height: 56px;">
   <td id="projectalign" style="padding-left: 0.5em;">
    <div id="projectname">DynaMix
-   &#160;<span id="projectnumber">1.0.4</span>
+   &#160;<span id="projectnumber">1.1.0</span>
    </div>
    <div id="projectbrief">A new take on polymorphism in C++</div>
   </td>
@@ -138,8 +138,7 @@ Multi DLL </h1>
 <p>The Multi DLL example (currently Windows only) is an example that shows how multiple dynamic libraries can work together sharing mixins and messages.</p>
 <p>It has four modules:</p>
 <ul>
-<li><b>common</b> - a static library linked with all other modules, that provides a mixin and some messages.</li>
-<li><b>dynlib</b> - a C++ dynamic library, linked with all other modules that a mixin and some messages.</li>
+<li><b>dynlib</b> - a C++ dynamic library, linked with all other modules that has a mixin and some messages.</li>
 <li><b>plugin</b> - a plugin-style dynamic library, which is not linked with the executable and, as plugins in other applications, may or may not be present with it. If it is present, the executable loads it, and calls its exported function, which enriches an object with a custom plugin mixin.</li>
 <li><b>executable</b> - the actual project executable that creates an object, optionally gives it to the plugin for custom mutation and then calls some messages. </li>
 </ul>
@@ -148,7 +147,7 @@ Multi DLL </h1>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Sat Feb 25 2017 22:08:56 for DynaMix by
+    <li class="footer">Generated on Thu Mar 2 2017 23:18:17 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>
