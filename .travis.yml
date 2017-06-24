@@ -34,7 +34,7 @@ matrix:
       before_install:
         - sudo apt-get update -qq
 
-      - compiler: gcc
+    - compiler: gcc
       addons:
         apt:
           sources:
