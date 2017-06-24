@@ -1,4 +1,5 @@
 language: cpp
+os: linux
 sudo: required
 dist: trusty
 
@@ -9,38 +10,44 @@ notifications:
 git:
   depth: 5
 
-addons:
-  apt:
-    sources:
-      - ubuntu-toolchain-r-test
-      - llvm-toolchain-precise-3.9
-
 matrix:
   include:
     - compiler: gcc
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
           packages:
             - g++-4.9
       env: COMPILER=g++-4.9
+      before_install:
+        - sudo apt-get update -qq
 
     - compiler: gcc
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
           packages:
             - g++-5
       env: COMPILER=g++-5
+      before_install:
+        - sudo apt-get update -qq
 
-    - compiler: gcc
+      - compiler: gcc
       addons:
         apt:
+          sources:
+            - ubuntu-toolchain-r-test
           packages:
             - g++-6
       env: COMPILER=g++-6
+      before_install:
+        - sudo apt-get update -qq
 
 before_script:
-  - ${compiler} --version
-  - ${cmake} --version
+  - ${COMPILER} --version
+  - cmake --version
 
 script:
   - mkdir -p debug_build
