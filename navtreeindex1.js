@@ -1,5 +1,7 @@
 var NAVTREEINDEX1 =
 {
+"classdynamix_1_1object__type__mutation.html#aa535840bec1010220b29e7c7f1919cf6":[11,0,0,20,20],
+"classdynamix_1_1object__type__mutation.html#aa8cb1d4e94c18123ef95133527022ab8":[11,0,0,20,17],
 "classdynamix_1_1object__type__mutation.html#aabd79be48775f2dd5f7c159b13800f11":[11,0,0,20,3],
 "classdynamix_1_1object__type__mutation.html#ab293c80c5627f5a81a30064c30ddd3a1":[11,0,0,20,19],
 "classdynamix_1_1object__type__mutation.html#ab8b0033c5e14006504484145e74fa5e6":[11,0,0,20,5],
@@ -115,8 +117,8 @@ var NAVTREEINDEX1 =
 "glossary.html#object":[3,0],
 "glossary.html#priority":[3,3],
 "hierarchy.html":[11,2],
-"index.html":[],
 "index.html":[0],
+"index.html":[],
 "index.html#abstract":[0,0],
 "index.html#comparisons":[0,3],
 "index.html#ecs":[0,3,1],

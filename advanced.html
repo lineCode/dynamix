@@ -108,6 +108,7 @@ $(document).ready(function(){initNavTree('advanced.html','');});
 <li class="level2"><a href="#mutation_perf">Mutation performance </a></li>
 </ul>
 </li>
+<li class="level1"><a href="#thread_safety">Thread safety </a></li>
 <li class="level1"><a href="#using_allocators">Using custom allocators </a></li>
 <li class="level1"><a href="#more_msg_arity">Having messages with more arguments </a></li>
 <li class="level1"><a href="#dynlibs">Shared libraries and program plugins </a></li>
@@ -254,6 +255,18 @@ Mutation performance </h2>
 <tr>
 <td>Same type alloc </td><td>16,176 ns </td><td>238 ns </td></tr>
 </table>
+<h1><a class="anchor" id="thread_safety"></a>
+Thread safety </h1>
+<p>Some functionalities of the library are purposefully not thread-safe so as to avoid the synchronization overhead for users which don't need it. For those it is possible to implement thread-safety in the client code.</p>
+<ul>
+<li>Querying objects (say with <code>has</code>, <code>get</code>, or <code>implements</code>) is thread-safe.</li>
+<li>Calling messages is thread-safe. As thread-safe as the underlying functions of course.</li>
+<li>Copying objects is thread-safe. As thread-safe as the copy-constructors and assignment operators of the mixins in those objects.</li>
+<li>Mutating different objects in different threads is thread-safe. <em>HOWEVER</em></li>
+<li>Mutating the same object in multiple threads is <b>not</b> thread-safe. If you need this, you can subclass object and have a mutex within your class, which can be maintained by a mutation rule</li>
+<li>Mutating objects in some threads, while calling messages to <em>other</em> objects in other threads is thread-safe. <em>HOWEVER</em></li>
+<li>Mutating an object in one thread and calling messages for this object in another is <b>not</b> thread-safe and, alas, it's hard to accomplish. If you absolutely need this, our suggestion is to first add a mutex to each object by inheriting it. Second, lock/unlock it via mutation rules. And, third, define your own message macros, for your object type which also lock said mutex.</li>
+</ul>
 <h1><a class="anchor" id="using_allocators"></a>
 Using custom allocators </h1>
 <p>(For the complete, working source of this example see <a href="https://github.com/iboB/dynamix/blob/master/tutorial/allocators.cpp">allocators.cpp</a>)</p>
@@ -388,7 +401,7 @@ External custom preprocessor </h2>
 <!-- start footer part -->
 <div id="nav-path" class="navpath"><!-- id is needed for treeview function! -->
   <ul>
-    <li class="footer">Generated on Thu Mar 2 2017 23:18:17 for DynaMix by
+    <li class="footer">Generated on Tue Jul 18 2017 00:12:14 for DynaMix by
     <a href="http://www.doxygen.org/index.html">
     <img class="footer" src="doxygen.png" alt="doxygen"/></a> 1.8.11 </li>
   </ul>

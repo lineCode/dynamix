@@ -76,6 +76,7 @@ var NAVTREE =
         [ "Message performance ", "advanced.html#msg_perf", null ],
         [ "Mutation performance ", "advanced.html#mutation_perf", null ]
       ] ],
+      [ "Thread safety ", "advanced.html#thread_safety", null ],
       [ "Using custom allocators ", "advanced.html#using_allocators", null ],
       [ "Having messages with more arguments ", "advanced.html#more_msg_arity", null ],
       [ "Shared libraries and program plugins ", "advanced.html#dynlibs", null ],
@@ -99,6 +100,7 @@ var NAVTREE =
         [ "What is an entity-component-system ", "appendix.html#what_is_ecs", null ],
         [ "Why are entity-component-systems good? ", "appendix.html#why_is_ecs_good", null ],
         [ "Non-polymorphic entity-component-systems ", "appendix.html#nonpoly_ecs", null ],
+        [ "Who uses entity-component-systems? ", "appendix.html#who_uses_ecs", null ],
         [ "Further reading ", "appendix.html#more_ecs", null ]
       ] ],
       [ "Appendix B. Visual Studio watch visualizers ", "appendix.html#app_vs_watch", [
@@ -128,7 +130,7 @@ var NAVTREE =
 var NAVTREEINDEX =
 [
 ".html",
-"classdynamix_1_1object__type__mutation.html#aabd79be48775f2dd5f7c159b13800f11"
+"classdynamix_1_1object__type__mutation.html#aa535840bec1010220b29e7c7f1919cf6"
 ];
 
 var SYNCONMSG = 'click to disable panel synchronisation';
