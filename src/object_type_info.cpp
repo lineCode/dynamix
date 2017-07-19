@@ -18,7 +18,6 @@ namespace internal
 {
 
 object_type_info::object_type_info()
-    : _multicast_buffer(nullptr)
 {
     zero_memory(_mixin_indices, sizeof(_mixin_indices));
     zero_memory(_call_table, sizeof(_call_table));
@@ -31,7 +30,6 @@ object_type_info::object_type_info()
 
 object_type_info::~object_type_info()
 {
-    delete[] _multicast_buffer;
 }
 
 static const object_type_info null_type_info;
@@ -61,34 +59,15 @@ void object_type_info::dealloc_mixin_data(mixin_data_in_object* data) const
     domain::instance().allocator()->dealloc_mixin_data(reinterpret_cast<char*>(data));
 }
 
-struct bigger_message_priority
-{
-    bool operator()(const object_type_info::call_table_entry& a, const object_type_info::call_table_entry& b)
-    {
-        if(b.message_data->priority == a.message_data->priority)
-        {
-            const domain& dom = domain::instance();
-
-            // on the same priority sort by name of mixin
-            // this will guarantee that different compilations of the same mixins sets
-            // will always have the same order of multicast execution
-            const char* name_a = dom.mixin_info(a.message_data->_mixin_id).name;
-            const char* name_b = dom.mixin_info(b.message_data->_mixin_id).name;
-
-            return strcmp(name_a, name_b) < 0;
-        }
-        else
-        {
-            return b.message_data->priority < a.message_data->priority;
-        }
-    }
-};
-
 void object_type_info::fill_call_table()
 {
     // first pass
-    // set unicast messages and determine total multicast length
-    int total_multicast_length = 0;
+    // find top bid messages and prepare to calculate message buffer length length
+
+    intptr_t message_data_buffer_size = 0;
+
+    // in this pass we make use of the fact that _call_table begin and end start as nullptr
+    // for a new type so will will use them as counters
 
     for (const mixin_type_info* info : _compact_mixins)
     {
@@ -96,27 +75,75 @@ void object_type_info::fill_call_table()
         {
             call_table_entry& table_entry = _call_table[msg.message->id];
 
-            if(msg.message->mechanism == message_t::unicast)
+            DYNAMIX_ASSERT(table_entry.top_bid_message != nullptr || (table_entry.begin == nullptr || table_entry.end == nullptr));
+
+            if (msg.message->mechanism == message_t::unicast)
             {
-                if((!table_entry.message_data) || (table_entry.message_data->priority < msg.priority))
+                if (!table_entry.top_bid_message)
                 {
-                    table_entry.message_data = &msg;
+                    // new message
+                    table_entry.top_bid_message = &msg;
+                }
+                else if (table_entry.top_bid_message->priority < msg.priority)
+                {
+                    // we found bigger priority
+                    // make it looks like a new message
+                    table_entry.top_bid_message = &msg;
+
+                    // also remove the top-priority size we've accumulated
+                    message_data_buffer_size -= reinterpret_cast<intptr_t>(table_entry.begin) / sizeof(void*);
+                    table_entry.begin = nullptr;
+                }
+                else if (table_entry.top_bid_message->priority == msg.priority)
+                {
+                    ++message_data_buffer_size;
+
+                    // hacky usage of end to count top bidders
+                    // we need this so we can update message_data_buffer_size if we encounter
+                    // a message with a higher priority
+                    ++table_entry.begin;
+
+                    // we have multiple bidders for the same priority
+                    if (table_entry.top_bid_message->bid < msg.bid)
+                    {
+                        table_entry.top_bid_message = &msg;
+
+                        // count the first message too
+                        ++message_data_buffer_size;
+                        ++table_entry.begin;
+                    }
                 }
             }
-            else if(msg.message->mechanism == message_t::multicast)
+            if(msg.message->mechanism == message_t::multicast)
             {
-                ++total_multicast_length;
-                DYNAMIX_ASSERT(table_entry.multicast_begin == nullptr);
-                ++table_entry.multicast_end; // hacky count number of clients for this specific multicast
+                // again we use begin to set the size of the buffer this particular message needs
+                ++message_data_buffer_size;
+                ++table_entry.begin;
+
+                if (!table_entry.top_bid_message || table_entry.top_bid_message->bid != msg.bid)
+                {
+                    // additionally for each change of bid number in top_bid_message we will increment
+                    // message_data_buffer_size
+                    // we use this to make a guess for the buffer size so it
+                    // can incorporate all messages and all nullptr separators
+                    // it might be end up being a bigger number than needed (for example if bids go x,y,x)
+                    // but in the most common case (no multicast bids) it will be +0
+                    // furhter more this saves us from excessive allocations from using std::map or similar to
+                    // count the exact number of unique bids
+
+                    ++message_data_buffer_size;
+                    ++table_entry.begin;
+                }
+                table_entry.top_bid_message = &msg;
             }
         }
     }
 
     const domain& dom = domain::instance();
 
-    // pass through all messages to check for ones that we don't implement
-    // and have default implementations
-    // we need to set the multicast buffer size to include those ones too
+    // pass through all messages to check for mutlticasts which we don't implement
+    // but do have a default implementations
+    // we need to set the buffer size to include those ones too
     for (size_t i = 0; i < dom._num_registered_messages; ++i)
     {
         if (!dom._messages[i] || !dom._messages[i]->default_impl_data)
@@ -126,92 +153,54 @@ void object_type_info::fill_call_table()
             continue;
         }
 
-        const call_table_entry& table_entry = _call_table[i];
+        call_table_entry& table_entry = _call_table[i];
 
-        // note the hacky way of checking if we implement a multicast message
-        // we make use of the fact that in the step above we use the end pointer
-        // to count the number of clients for a message
-        // so, if it's zero, we don't implement it
-        if (dom._messages[i]->mechanism == message_t::multicast && !table_entry.multicast_end)
+        // we make use of the fact that we se a value to top_bid_message for multicasts
+        // (even though it's not used later) to check whether we implement the message
+        if (dom._messages[i]->mechanism == message_t::multicast && !table_entry.top_bid_message)
         {
-            ++total_multicast_length;
+            message_data_buffer_size += 2; // 1 for the pointer to default implementation and 1 for nullptr
+            table_entry.begin = nullptr;
         }
     }
 
-    // pass 1.5
-    // check for unicast clashes
-    for (const mixin_type_info* info : _compact_mixins)
-    {
-        for (const message_for_mixin& msg : info->message_infos)
-        {
-            call_table_entry& table_entry = _call_table[msg.message->id];
-
-            if(msg.message->mechanism == message_t::unicast)
-            {
-                DYNAMIX_THROW_UNLESS(
-                    (table_entry.message_data == &msg) || (table_entry.message_data->priority > msg.priority),
-                    unicast_clash
-                    );
-            }
-        }
-    }
-
-    _multicast_buffer = new call_table_entry[total_multicast_length];
-    call_table_entry* multicast_buffer_ptr = _multicast_buffer;
+    _message_data_buffer.reset(new pc_message_for_mixin[message_data_buffer_size]);
+    auto message_data_buffer_ptr = _message_data_buffer.get();
 
     // second pass
-    // set first multicast messages in buffer
+    // update begin and end pointers of _call_table and add message datas to buffer
     for (const mixin_type_info* info : _compact_mixins)
     {
         for (const message_for_mixin& msg : info->message_infos)
         {
             call_table_entry& table_entry = _call_table[msg.message->id];
 
-            if(msg.message->mechanism == message_t::multicast)
+            if(table_entry.begin)
             {
-                if(!table_entry.multicast_begin)
+                if (!table_entry.end)
                 {
-                    table_entry.multicast_begin = multicast_buffer_ptr;
-                    table_entry.multicast_begin->message_data = &msg;
+                    // begin is not null and end is null, so this message has not been updated
+                    // but needs to be
 
-                    DYNAMIX_ASSERT(table_entry.multicast_end);
-                    // increase the pointer with the count from the previous pass
-                    multicast_buffer_ptr += reinterpret_cast<size_t>(table_entry.multicast_end)/sizeof(call_table_entry);
-                    DYNAMIX_ASSERT(multicast_buffer_ptr - _multicast_buffer <= total_multicast_length);
+                    auto begin = message_data_buffer_ptr;
+                    message_data_buffer_ptr += reinterpret_cast<intptr_t>(table_entry.begin) / sizeof(void*);
+                    DYNAMIX_ASSERT(message_data_buffer_ptr - _message_data_buffer.get() <= message_data_buffer_size);
+                    table_entry.begin = begin;
+                    table_entry.end = begin;
+                }
 
-                    // set the end to its supposed value
-                    table_entry.multicast_end = table_entry.multicast_begin;
-                    ++table_entry.multicast_end;
+                if (table_entry.top_bid_message->bid == msg.bid || msg.message->mechanism == message_t::multicast)
+                {
+                    // add all messages for multicasts
+                    // add same-bid messages for unicasts
+                    *table_entry.end++ = &msg;
                 }
             }
         }
     }
 
-    // third pass
-    // fill the rest of the multicast messages in the buffer
-    for (const mixin_type_info* info : _compact_mixins)
-    {
-        for (const message_for_mixin& msg : info->message_infos)
-        {
-            call_table_entry& table_entry = _call_table[msg.message->id];
-
-            if(msg.message->mechanism == message_t::multicast)
-            {
-                DYNAMIX_ASSERT(table_entry.multicast_begin);
-                DYNAMIX_ASSERT(table_entry.multicast_end);
-
-                // message hasn't been inserted on previous pass
-                if(table_entry.multicast_begin->message_data != &msg)
-                {
-                    table_entry.multicast_end->message_data = &msg;
-                    ++table_entry.multicast_end;
-                }
-            }
-        }
-    }
-
-    // fourth pass through all messages of the domain
-    // if we implement it AND it is a multicast, sort our buffer
+    // third pass through all messages of the domain
+    // if we implement it AND it has a buffer, sort it
     for(size_t i=0; i<dom._num_registered_messages; ++i)
     {
         if (!dom._messages[i])
@@ -220,23 +209,86 @@ void object_type_info::fill_call_table()
             continue;
         }
 
-        if(dom._messages[i]->mechanism == message_t::multicast)
+        call_table_entry& table_entry = _call_table[i];
+
+        if (!table_entry.begin)
         {
-            call_table_entry& table_entry = _call_table[i];
+            // either we don't implement this message
+            // or it's a unicast with the same bid
+            // we don't care about those
+            continue;
+        }
 
-            if(!table_entry.message_data)
+        // sort by bid
+        std::sort(table_entry.begin, table_entry.end, [](const message_for_mixin* a, const message_for_mixin* b) -> bool
+        {
+            // descending
+            return b->bid < a->bid;
+        });
+
+        if (dom._messages[i]->mechanism == message_t::multicast)
+        {
+            // for multicasts we have extra work to do
+            // we need to sort messages with the same bid by priority
+            // and then create gaps of nullptr between different bids
+            auto begin = table_entry.begin;
+            for (auto ptr = table_entry.begin; ptr < table_entry.end; ++ptr)
             {
-                // we dont implement it so we don't care
-                continue;
+                auto next = ptr + 1;
+
+                if (next == table_entry.end || (*next)->bid != (*ptr)->bid)
+                {
+                    // gap
+                    // sort by priority
+                    std::sort(begin, next, [](const message_for_mixin* a, const message_for_mixin* b) -> bool
+                    {
+                        if (b->priority == a->priority)
+                        {
+                            const domain& dom = domain::instance();
+
+                            // on the same priority sort by name of mixin
+                            // this will guarantee that different compilations of the same mixins sets
+                            // will always have the same order of multicast execution
+                            const char* name_a = dom.mixin_info(a->_mixin_id).name;
+                            const char* name_b = dom.mixin_info(b->_mixin_id).name;
+
+                            return strcmp(name_a, name_b) < 0;
+                        }
+                        else
+                        {
+                            return b->priority < a->priority;
+                        }
+                    });
+
+                    // add nulltpr "hole"
+                    std::copy_backward(ptr, table_entry.end, next);
+                    *next = nullptr;
+                    ++ptr;
+                    //++table_entry.end;
+                    begin = ptr;
+                }
             }
-
-            DYNAMIX_ASSERT(table_entry.multicast_begin);
-            DYNAMIX_ASSERT(table_entry.multicast_end);
-
-            std::sort(table_entry.multicast_begin, table_entry.multicast_end, bigger_message_priority());
         }
     }
 
+    // pass 1.5
+    // check for unicast clashes
+    // no messages with the same bid and priority may exist
+    for (const mixin_type_info* info : _compact_mixins)
+    {
+        for (const message_for_mixin& msg : info->message_infos)
+        {
+            call_table_entry& table_entry = _call_table[msg.message->id];
+
+            if (msg.message->mechanism == message_t::unicast)
+            {
+                DYNAMIX_THROW_UNLESS(
+                    (table_entry.top_bid_message == &msg) || (table_entry.top_bid_message->bid > msg.bid || table_entry.top_bid_message->priority > msg.priority),
+                    unicast_clash
+                );
+            }
+        }
+    }
 
     // final pass through all messages
     // if we don't implement a message and it has a default implementation, set it
@@ -244,7 +296,7 @@ void object_type_info::fill_call_table()
     {
         call_table_entry& table_entry = _call_table[i];
 
-        if (table_entry.message_data)
+        if (table_entry.top_bid_message)
         {
             // we already implement this message
             continue;
@@ -264,17 +316,15 @@ void object_type_info::fill_call_table()
             continue;
         }
 
-        if (msg_data->mechanism == message_t::unicast)
+        table_entry.top_bid_message = msg_data->default_impl_data;
+
+        if (msg_data->mechanism == message_t::multicast)
         {
-            table_entry.message_data = msg_data->default_impl_data;
-        }
-        else
-        {
-            table_entry.multicast_begin = multicast_buffer_ptr;
-            table_entry.multicast_begin->message_data = msg_data->default_impl_data;
-            table_entry.multicast_end = table_entry.multicast_begin;
-            ++table_entry.multicast_end;
-            ++multicast_buffer_ptr;
+            table_entry.begin = message_data_buffer_ptr;
+            *table_entry.begin = table_entry.top_bid_message;
+            table_entry.end = table_entry.begin + 1;
+            *table_entry.end = nullptr;
+            ++message_data_buffer_ptr;
         }
     }
 }

@@ -18,6 +18,8 @@
 #include "message.hpp"
 #include "assert.hpp"
 
+#include <memory>
+
 // object type info is an immutable class that represents the type information for a
 // group of objects
 
@@ -49,8 +51,6 @@ public:
     mixin_data_in_object* alloc_mixin_data() const;
     void dealloc_mixin_data(mixin_data_in_object* data) const;
 
-    void generate_call_table();
-
 _dynamix_internal:
     using mixin_collection::_mixins;
     using mixin_collection::_compact_mixins;
@@ -75,27 +75,29 @@ _dynamix_internal:
 
     struct call_table_entry
     {
-        union
-        {
-            // this view is for unicast messages
-            // it will contain the message with the highest priority
-            struct
-            {
-                const message_for_mixin* message_data;
-            };
+        // used when building the buffer to hold the top-bid message for the top priority
+        // also used in the unicast message macros for optimization - to call the top-bid
+        // message without the indrection from dereferencing begin
+        const message_for_mixin* top_bid_message;
 
-            // this view is used for multicast messages
-            // it will contain a dynamically allocated array of entries sorted by priority
-            struct
-            {
-                call_table_entry* multicast_begin;
-                call_table_entry* multicast_end;
-            };
-        };
-
+        // a dynamically allocated array of all message datas
+        // for unicasts it will hold pointers to all top-prirority messages for each bid
+        // or be nullptr if there are no bids except a single one. It's used for DYNAMIX_CALL_NEXT_BIDDER
+        // for multicasts it will hold groups message datas sorted by priority sorted by bid
+        // then separated by nullptr
+        // ie: b1p1, b1p0, nullptr, b0p5, b0p1, b0p0 nullptr ...
+        // thus calling DYNAMIX_CALL_NEXT_BIDDER will result in a search in this array
+        // being progressively slower for the deph of bidders we use
+        // also for multicasts it will be even slower depending on how many messages with the same bid exist
+        // we pay this price to achieve the maximum performance for the straight-forward simple message call case
+        const message_for_mixin** begin;
+        const message_for_mixin** end;
     };
 
-    call_table_entry* _multicast_buffer; // a single buffer for all multicast messages to save allocation calls
+    // a single buffer for all dynamically allocated message pointers to minimize allocations
+    using c_message_for_mixin = const message_for_mixin;
+    using pc_message_for_mixin = c_message_for_mixin*;
+    std::unique_ptr<pc_message_for_mixin[]> _message_data_buffer;
     call_table_entry _call_table[DYNAMIX_MAX_MESSAGES];
 
 #if DYNAMIX_ADDITIONAL_METRICS
