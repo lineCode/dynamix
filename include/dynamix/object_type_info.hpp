@@ -78,16 +78,16 @@ _dynamix_internal:
         // used when building the buffer to hold the top-bid message for the top priority
         // also used in the unicast message macros for optimization - to call the top-bid
         // message without the indrection from dereferencing begin
+        // also for multicasts which fall back to a default msg implementation this is used to
+        // hold the pointer to the default implementation
         const message_for_mixin* top_bid_message;
 
         // a dynamically allocated array of all message datas
         // for unicasts it will hold pointers to all top-prirority messages for each bid
         // or be nullptr if there are no bids except a single one. It's used for DYNAMIX_CALL_NEXT_BIDDER
         // for multicasts it will hold groups message datas sorted by priority sorted by bid
-        // then separated by nullptr
-        // ie: b1p1, b1p0, nullptr, b0p5, b0p1, b0p0 nullptr ...
         // thus calling DYNAMIX_CALL_NEXT_BIDDER will result in a search in this array
-        // being progressively slower for the deph of bidders we use
+        // (being progressively slower for the deph of bidders we use)
         // also for multicasts it will be even slower depending on how many messages with the same bid exist
         // we pay this price to achieve the maximum performance for the straight-forward simple message call case
         const message_for_mixin** begin;
