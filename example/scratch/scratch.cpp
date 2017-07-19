@@ -19,7 +19,7 @@ DYNAMIX_DECLARE_MIXIN(b);
 DYNAMIX_DECLARE_MIXIN(c);
 DYNAMIX_DECLARE_MIXIN(d);
 
-DYNAMIX_MESSAGE_1(void, trace, std::ostream&, out);
+DYNAMIX_CONST_MESSAGE_1(void, trace, std::ostream&, out);
 DYNAMIX_MESSAGE_1(void, priority_trace, std::ostream&, out);
 
 int main()
@@ -42,7 +42,7 @@ int main()
 class a
 {
 public:
-    void trace(std::ostream& out)
+    void trace(std::ostream& out) const
     {
         out << "a";
     }
@@ -56,8 +56,11 @@ public:
 class b
 {
 public:
-    void trace(std::ostream& out)
+    void trace(std::ostream& out) const
     {
+        DYNAMIX_CALL_NEXT_BIDDER(trace_msg, out);
+        //using foo = std::result_of<dynamix_msg_trace::caller_func(void*, std::ostream)>::type;
+        //using bar = decltype(std::declval<dynamix_msg_trace::caller_func>()(nullptr, out));
         out << "b";
     }
 
@@ -70,7 +73,7 @@ public:
 class c
 {
 public:
-    void trace(std::ostream& out)
+    void trace(std::ostream& out) const
     {
         out << "c";
     }
@@ -84,7 +87,7 @@ public:
 class d
 {
 public:
-    void trace(std::ostream& out)
+    void trace(std::ostream& out) const
     {
         out << "d";
     }
