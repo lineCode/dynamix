@@ -14,65 +14,93 @@
 using namespace std;
 using namespace dynamix;
 
-using namespace dynamix;
+DYNAMIX_DECLARE_MIXIN(a);
+DYNAMIX_DECLARE_MIXIN(b);
+DYNAMIX_DECLARE_MIXIN(c);
+DYNAMIX_DECLARE_MIXIN(d);
 
-// some mixins and messages
-DYNAMIX_DECLARE_MIXIN(counter);
-DYNAMIX_DECLARE_MIXIN(no_messages);
-DYNAMIX_DECLARE_MIXIN(type_checker);
-//DYNAMIX_DECLARE_MIXIN(overrider);
-//DYNAMIX_DECLARE_MIXIN(foo);
-//DYNAMIX_DECLARE_MIXIN(bar);
-
-DYNAMIX_MESSAGE(void, dummy);
-DYNAMIX_CONST_MESSAGE(const void*, get_self);
-
-class no_messages
-{
-};
-
-class counter
-{
-public:
-    counter()
-        : _count(0)
-    {}
-
-    void dummy() {}
-
-    void count_uni() { ++_count; }
-    void count_multi();
-
-    int get_count() const { return _count; }
-private:
-    int _count;
-};
-
-class type_checker
-{
-public:
-    const void* get_self() const
-    {
-        return this;
-    }
-};
+DYNAMIX_MESSAGE_1(void, trace, std::ostream&, out);
+DYNAMIX_MESSAGE_1(void, priority_trace, std::ostream&, out);
 
 int main()
 {
     object o;
-    mutate(o).add<type_checker>();
 
-    cout << (get_self(o) == o.get<type_checker>()) << endl;
+    mutate(o)
+        .add<a>()
+        .add<b>()
+        .add<c>()
+        .add<d>();
 
-    // works as ptr too
-    cout << (get_self(&o) == o.get<type_checker>()) << endl;
+    trace(o, cout);
+    cout << endl;
 
     return 0;
 }
 
-DYNAMIX_DEFINE_MIXIN(no_messages, none);
-DYNAMIX_DEFINE_MIXIN(counter, dummy_msg);
-DYNAMIX_DEFINE_MIXIN(type_checker, get_self_msg);
 
-DYNAMIX_DEFINE_MESSAGE(dummy);
-DYNAMIX_DEFINE_MESSAGE(get_self);
+class a
+{
+public:
+    void trace(std::ostream& out)
+    {
+        out << "a";
+    }
+
+    void priority_trace(std::ostream& out)
+    {
+        out << "-1";
+    }
+};
+
+class b
+{
+public:
+    void trace(std::ostream& out)
+    {
+        out << "b";
+    }
+
+    void priority_trace(std::ostream& out)
+    {
+        out << "2";
+    }
+};
+
+class c
+{
+public:
+    void trace(std::ostream& out)
+    {
+        out << "c";
+    }
+
+    void priority_trace(std::ostream& out)
+    {
+        out << "1";
+    }
+};
+
+class d
+{
+public:
+    void trace(std::ostream& out)
+    {
+        out << "d";
+    }
+
+    void priority_trace(std::ostream& out)
+    {
+        out << "0";
+    }
+};
+
+// this order should be important if the messages aren't sorted by mixin name
+DYNAMIX_DEFINE_MIXIN(b, bid(2, trace_msg) & priority(2, priority_trace_msg));
+DYNAMIX_DEFINE_MIXIN(a, bid(-1, trace_msg) & priority(-1, priority_trace_msg));
+DYNAMIX_DEFINE_MIXIN(c, bid(1, trace_msg) & priority(1, priority_trace_msg));
+DYNAMIX_DEFINE_MIXIN(d, trace_msg & priority_trace_msg);
+
+DYNAMIX_DEFINE_MESSAGE(trace);
+DYNAMIX_DEFINE_MESSAGE(priority_trace);
+

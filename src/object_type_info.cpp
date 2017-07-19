@@ -94,21 +94,26 @@ void object_type_info::fill_call_table()
                 }
                 else if (table_entry.top_bid_message->priority == msg.priority)
                 {
-                    ++message_data_buffer_size;
+                    if (!table_entry.begin)
+                    {
+                        // same-priority message
+                        // we will need a buffer for those if they're top-priority
+                        // add one to the buffer for the first one too
+                        ++message_data_buffer_size;
 
-                    // hacky usage of end to count top bidders
-                    // we need this so we can update message_data_buffer_size if we encounter
-                    // a message with a higher priority
+                        // hacky usage of end to count top bidders
+                        // we need this so we can update message_data_buffer_size if we encounter
+                        // a message with a higher priority
+                        ++table_entry.begin;
+                    }
+
+                    ++message_data_buffer_size;
                     ++table_entry.begin;
 
                     // we have multiple bidders for the same priority
                     if (table_entry.top_bid_message->bid < msg.bid)
                     {
                         table_entry.top_bid_message = &msg;
-
-                        // count the first message too
-                        ++message_data_buffer_size;
-                        ++table_entry.begin;
                     }
                 }
             }
@@ -167,7 +172,7 @@ void object_type_info::fill_call_table()
                     table_entry.end = begin;
                 }
 
-                if (msg.message->mechanism == message_t::multicast || table_entry.top_bid_message->bid == msg.bid )
+                if (msg.message->mechanism == message_t::multicast || table_entry.top_bid_message->priority == msg.priority)
                 {
                     // add all messages for multicasts
                     // add same-bid messages for unicasts
